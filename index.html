@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bayshore Athletic Club | Braintree, MA</title>
+<meta name="description" content="South Shore's full-service gym in Braintree, MA. Classes, training, tanning, babysitting, and more. Claim a free day pass.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">BAYSHORE <span>ATHLETIC CLUB</span></a>
+  <ul class="nav-links">
+    <li><a href="memberships.html">Membership</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="amenities.html">Amenities</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="free-pass.html" class="nav-cta">Free Day Pass</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMobile()">Home</a>
+  <a href="memberships.html" onclick="closeMobile()">Membership</a>
+  <a href="classes.html" onclick="closeMobile()">Classes</a>
+  <a href="amenities.html" onclick="closeMobile()">Amenities</a>
+  <a href="contact.html" onclick="closeMobile()">Contact</a>
+  <a href="free-pass.html" onclick="closeMobile()" style="color:var(--accent)">Free Day Pass</a>
+</div>
+<!-- HERO (stays dark for impact) -->
+<section id="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Braintree, MA · South Shore's Best Gym</p>
+    <h1 class="hero-title">IT'S ALL HERE<br>&amp; IT'S ALL<em>ABOUT YOU</em></h1>
+    <p class="hero-sub">Motivating culture. No judgment. Just fitness. Bayshore Athletic Club has everything you need to reach your goals — classes, training, tanning, babysitting, and more.</p>
+    <div class="hero-actions">
+      <a href="memberships.html" class="btn-primary">View Memberships</a>
+      <a href="free-pass.html" class="btn-outline">Try It Free</a>
+    </div>
+  </div>
+</section>
+<!-- FREE DAY PASS BANNER -->
+<div id="daypass-banner">
+  <div class="banner-text">
+    FREE DAY PASS
+    <span>No commitment. No pressure. Experience Bayshore as a full member.</span>
+  </div>
+  <a href="free-pass.html" class="btn-accent">Claim Your Pass →</a>
+</div>
+<!-- STATS (dark stripe) -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">Years Serving Braintree</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Group Fitness Classes</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5AM</div>
+      <div class="stat-label">Open Weekdays</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4.7<span style="font-size:30px; vertical-align:super;">★</span></div>
+      <div class="stat-label">Google Rating</div>
+    </div>
+  </div>
+</section>
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <p class="section-label">Member Reviews</p>
+    <h2 class="section-title">WHAT OUR<br>MEMBERS SAY</h2>
+
+    <div class="reviews-aggregate">
+      <div class="agg-score">4.7</div>
+      <div>
+        <div class="agg-stars">★★★★★</div>
+        <div class="agg-meta">Average rating on Google</div>
+      </div>
+    </div>
+
+    <!-- Real Google reviews (lightly tightened for length). Order can be changed freely. -->
+    <div class="reviews-grid" style="margin-top:24px;">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"I've been coming to this gym for over 10 years and the new building is amazing! The owner and the staff are all amazing — super accommodating and friendly. For those of you looking for a gym, this is the place. 11/10"</div>
+        <div class="review-author">Jason L.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"The new spot is bright, clean &amp; spacious. You'll never wait for a dumbbell. Locker rooms &amp; showers are pristine. All the hard work and pride of Tim &amp; the Bayshore staff shows. Fresh chapter!"</div>
+        <div class="review-author">Ranee A.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Basically the best gym/fitness center you are going to find near Boston. Super convenient, right off 93. This gym has everything you need and the new location is much nicer. I tried the Y, Crunch, and Planet Fitness — this takes the cake by far."</div>
+        <div class="review-author">Cameron</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Loved the old building but this is BETTER! Great location, easy in and out. Completely renovated, stunning gym! Friendly, awesome staff — come and see for yourself."</div>
+        <div class="review-author">Steve J.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Great energy, great environment, amazing people, and so much variety with the equipment!"</div>
+        <div class="review-author">Enhea P.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:36px;">
+      <!-- TODO: swap for the exact Google reviews deep-link once you have the Place ID -->
+      <a class="reviews-more" href="https://www.google.com/maps/search/?api=1&amp;query=Bayshore+Athletic+Club+Braintree+MA" target="_blank" rel="noopener">Hear what more members have to say →</a>
+    </div>
+  </div>
+</section>
+<!-- CLOSING CTA -->
+<section class="cta-band">
+  <div class="container">
+    <p class="section-label">Get Started</p>
+    <h2 class="section-title">READY WHEN YOU ARE</h2>
+    <p class="section-body">Come see the new building for yourself. Grab a free day pass or pick the plan that fits.</p>
+    <div class="cta-actions">
+      <a href="free-pass.html" class="btn-primary">Try It Free</a>
+      <a href="memberships.html" class="btn-outline">View Memberships</a>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Bayshore Athletic Club</div>
+  <div class="footer-links">
+    <a href="classes.html">Classes</a>
+    <a href="memberships.html">Membership</a>
+    <a href="amenities.html">Amenities</a>
+    <a href="contact.html">Contact</a>
+    <a href="free-pass.html">Free Pass</a>
+  </div>
+  <div class="footer-copy">© 2026 Bayshore Athletic Club · 160 Granite St, Braintree MA · <a href="tel:7813565303">781-356-5303</a></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

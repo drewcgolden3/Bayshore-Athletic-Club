@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memberships | Bayshore Athletic Club</title>
+<meta name="description" content="Bayshore Athletic Club membership options in Braintree, MA — VIP, family, paid-in-full, and special rates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">BAYSHORE <span>ATHLETIC CLUB</span></a>
+  <ul class="nav-links">
+    <li><a href="memberships.html" class="active">Membership</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="amenities.html">Amenities</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="free-pass.html" class="nav-cta">Free Day Pass</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMobile()">Home</a>
+  <a href="memberships.html" onclick="closeMobile()">Membership</a>
+  <a href="classes.html" onclick="closeMobile()">Classes</a>
+  <a href="amenities.html" onclick="closeMobile()">Amenities</a>
+  <a href="contact.html" onclick="closeMobile()">Contact</a>
+  <a href="free-pass.html" onclick="closeMobile()" style="color:var(--accent)">Free Day Pass</a>
+</div>
+<!-- MEMBERSHIP -->
+<section id="membership" class="section-first">
+  <div class="container">
+    <div class="membership-header">
+      <p class="section-label">Membership Options</p>
+      <h2 class="section-title">FIND YOUR<br>PLAN</h2>
+      <p class="section-body">Flexible options for every lifestyle. Monthly EFT memberships, family rates, and paid-in-full options — including special pricing for students, Braintree residents, and first responders.</p>
+    </div>
+
+    <div class="plans-grid">
+      <div class="plan-card featured">
+        <span class="plan-badge">Most Popular</span>
+        <div class="plan-name">VIP Membership</div>
+        <div class="plan-price"><sup>$</sup>59<sup>.99</sup><sub>/mo</sub></div>
+        <div class="plan-desc">$69.99 enrollment · Unlimited access · EFT monthly billing</div>
+        <ul class="plan-features">
+          <li>Unlimited gym access</li>
+          <li>All group fitness classes included</li>
+          <li>Family add-on pricing available</li>
+          <li>Freeze for just $3/month</li>
+          <li>Cancel anytime ($3/mo up to 12 months)</li>
+          <li>Insurance reimbursement eligible</li>
+        </ul>
+        <a href="https://bayshoreac.thememberspot.com/signup/bayshore-athletic-club" target="_blank" rel="noopener" class="btn-plan">Join Now →</a>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-name">VIP Family</div>
+        <div class="plan-price"><sup>$</sup>57<sup>.99</sup><sub>/mo per member</sub></div>
+        <div class="plan-desc">Bring the whole family. Significant savings for multi-member households.</div>
+        <ul class="plan-features">
+          <li>2nd member: <strong>$57.99/mo</strong></li>
+          <li>3rd member: <strong>$54.99/mo</strong></li>
+          <li>4th member: <strong style="color:var(--accent)">FREE</strong></li>
+          <li>Babysitting add-on: $20/child/mo</li>
+          <li>All members get full access</li>
+          <li>Same freeze &amp; cancel terms as VIP</li>
+        </ul>
+        <a href="https://bayshoreac.thememberspot.com/signup/bayshore-athletic-club" target="_blank" rel="noopener" class="btn-plan">Join Now →</a>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-bottom: 24px;">Paid In Full Options</p>
+    <div class="paid-grid">
+      <div class="paid-item">
+        <div class="paid-label">Braintree Resident — 1 Year</div>
+        <div class="paid-price">$560</div>
+        <div class="paid-note">Best value for locals</div>
+      </div>
+      <div class="paid-item">
+        <div class="paid-label">1 Year</div>
+        <div class="paid-price">$599</div>
+        <div class="paid-note">Non-resident annual</div>
+      </div>
+      <div class="paid-item">
+        <div class="paid-label">6 Months</div>
+        <div class="paid-price">$325</div>
+        <div class="paid-note">Semi-annual</div>
+      </div>
+      <div class="paid-item">
+        <div class="paid-label">3 Months</div>
+        <div class="paid-price">$210</div>
+        <div class="paid-note">Quarterly</div>
+      </div>
+      <div class="paid-item">
+        <div class="paid-label">1 Month</div>
+        <div class="paid-price">$85</div>
+        <div class="paid-note">Month-to-month prepaid</div>
+      </div>
+      <div class="paid-item">
+        <div class="paid-label">Student — 1 Month</div>
+        <div class="paid-price">$45</div>
+        <div class="paid-note">Also 3 months: $129</div>
+      </div>
+    </div>
+
+    <div class="paid-grid" style="margin-top: 16px;">
+      <div class="paid-item" style="border-left-color: var(--red);">
+        <div class="paid-label">Police / Fire / Military</div>
+        <div class="paid-price">$435</div>
+        <div class="paid-note">Annual rate — thank you for your service</div>
+      </div>
+    </div>
+
+    <div class="insurance-note">
+      <svg class="ico" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10c.7.7 1 1.3 1 2h6c0-.7.3-1.3 1-2a6 6 0 00-4-10z"/></svg><strong>Insurance Reimbursement:</strong> Many health insurance plans reimburse gym memberships. <a href="contact.html">Get in touch</a> and we'll check your eligibility. Paid-in-full memberships are non-transferable.
+    </div>
+  </div>
+</section>
+<!-- CLOSING CTA -->
+<section class="cta-band">
+  <div class="container">
+    <p class="section-label">Try Before You Join</p>
+    <h2 class="section-title">NOT SURE YET?</h2>
+    <p class="section-body">Spend a full day on us before you commit. No pressure, no obligation.</p>
+    <div class="cta-actions">
+      <a href="free-pass.html" class="btn-primary">Try It Free</a>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Bayshore Athletic Club</div>
+  <div class="footer-links">
+    <a href="classes.html">Classes</a>
+    <a href="memberships.html">Membership</a>
+    <a href="amenities.html">Amenities</a>
+    <a href="contact.html">Contact</a>
+    <a href="free-pass.html">Free Pass</a>
+  </div>
+  <div class="footer-copy">© 2026 Bayshore Athletic Club · 160 Granite St, Braintree MA · <a href="tel:7813565303">781-356-5303</a></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
