@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Day Pass | Bayshore Athletic Club</title>
+<meta name="description" content="Claim a free day pass to Bayshore Athletic Club in Braintree, MA. Full member access for a day, no commitment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">BAYSHORE <span>ATHLETIC CLUB</span></a>
+  <ul class="nav-links">
+    <li><a href="memberships.html">Membership</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="amenities.html">Amenities</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="free-pass.html" class="nav-cta active">Free Day Pass</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMobile()">Home</a>
+  <a href="memberships.html" onclick="closeMobile()">Membership</a>
+  <a href="classes.html" onclick="closeMobile()">Classes</a>
+  <a href="amenities.html" onclick="closeMobile()">Amenities</a>
+  <a href="contact.html" onclick="closeMobile()">Contact</a>
+  <a href="free-pass.html" onclick="closeMobile()" style="color:var(--accent)">Free Day Pass</a>
+</div>
+<!-- FREE DAY PASS (dark section) -->
+<section id="daypass" class="section-first">
+  <div class="container">
+    <p class="section-label">Try Before You Join</p>
+    <h2 class="section-title">FREE DAY PASS</h2>
+    <p class="section-body">We want everyone to have the opportunity to experience Bayshore as a full member — no commitment, no pressure. One complimentary day for first-time visitors to explore the club and see if it's the right fit.</p>
+
+    <div class="daypass-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Sign Up Below</div>
+        <div class="step-text">Fill out the quick form — just your name and email. Takes under 60 seconds.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Visit the Club</div>
+        <div class="step-text">Come by during open hours. Show your pass at the front desk and we'll take care of the rest.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Experience Everything</div>
+        <div class="step-text">Use the gym, attend a class, explore the facilities — full member access for the entire day.</div>
+      </div>
+    </div>
+
+    <div class="daypass-form-wrap">
+      <div class="daypass-form-title">CLAIM YOUR FREE PASS</div>
+      <div class="form-fields" id="daypassForm">
+        <input type="text" id="dp-name" placeholder="Your Name" autocomplete="name">
+        <input type="email" id="dp-email" placeholder="Email Address" autocomplete="email">
+        <input type="tel" id="dp-phone" placeholder="Phone (optional)" autocomplete="tel">
+        <input type="text" id="dp-company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
+        <button class="btn-submit" id="dp-submit" onclick="submitDayPass()">GET MY FREE PASS →</button>
+        <p id="dp-error" style="display:none; color:var(--red); font-size:13px; text-align:center; margin-top:4px;"></p>
+      </div>
+      <div id="daypass-success" style="display:none; text-align:center; padding:20px 0; font-weight:600; color:var(--accent); font-size:16px;">
+        <svg viewBox="0 0 24 24" style="width:22px;height:22px;stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:-4px;margin-right:6px;"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>You're all set — check your inbox for your free pass. See you at Bayshore!
+      </div>
+      <p class="form-note">Or call us: <strong><a href="tel:7813565303">781-356-5303</a></strong> · 160 Granite St, Braintree MA</p>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Bayshore Athletic Club</div>
+  <div class="footer-links">
+    <a href="classes.html">Classes</a>
+    <a href="memberships.html">Membership</a>
+    <a href="amenities.html">Amenities</a>
+    <a href="contact.html">Contact</a>
+    <a href="free-pass.html">Free Pass</a>
+  </div>
+  <div class="footer-copy">© 2026 Bayshore Athletic Club · 160 Granite St, Braintree MA · <a href="tel:7813565303">781-356-5303</a></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classes & Training | Bayshore Athletic Club</title>
+<meta name="description" content="Group fitness classes and personal training at Bayshore Athletic Club in Braintree, MA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">BAYSHORE <span>ATHLETIC CLUB</span></a>
+  <ul class="nav-links">
+    <li><a href="memberships.html">Membership</a></li>
+    <li><a href="classes.html" class="active">Classes</a></li>
+    <li><a href="amenities.html">Amenities</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="free-pass.html" class="nav-cta">Free Day Pass</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMobile()">Home</a>
+  <a href="memberships.html" onclick="closeMobile()">Membership</a>
+  <a href="classes.html" onclick="closeMobile()">Classes</a>
+  <a href="amenities.html" onclick="closeMobile()">Amenities</a>
+  <a href="contact.html" onclick="closeMobile()">Contact</a>
+  <a href="free-pass.html" onclick="closeMobile()" style="color:var(--accent)">Free Day Pass</a>
+</div>
+<!-- CLASSES -->
+<section id="classes" class="section-first">
+  <div class="container">
+    <div class="classes-intro">
+      <div>
+        <p class="section-label">Group Fitness</p>
+        <h2 class="section-title">CLASSES FOR EVERY LEVEL</h2>
+      </div>
+      <div>
+        <p class="section-body">From high-intensity interval training to meditative yoga, Bayshore offers something for every fitness goal and experience level. All classes are included with membership.</p>
+        <br>
+        <a href="schedule.html" class="btn-outline-dark">Full Schedule →</a>
+      </div>
+    </div>
+
+    <div class="classes-grid">
+      <div class="class-card">
+        <div class="class-icon"><svg class="ico" viewBox="0 0 24 24"><path d="M7 11V7a3 3 0 016 0v3"/><path d="M7 11h7a3 3 0 013 3v1a4 4 0 01-4 4H9a4 4 0 01-4-4v-1a3 3 0 012-3z"/></svg></div>
+        <div class="class-name">Cardio Kickboxing</div>
+        <div class="class-desc">Burn up to 1,000 calories. Blends athletic drills with martial arts for an intense cardiovascular workout. No contact, no bags, no gloves.</div>
+      </div>
+      <div class="class-card">
+        <div class="class-icon"><svg class="ico" viewBox="0 0 24 24"><circle cx="5.5" cy="17" r="3.3"/><circle cx="18.5" cy="17" r="3.3"/><path d="M5.5 17l4-7h5l3 7M9.5 10l1.5 3.5M14 6.5h2.5"/></svg></div>
+        <div class="class-name">Cycle</div>
+        <div class="class-desc">Endurance workout with varied intensities on stationary fly-wheel bikes. Beginner to advanced — ride at your own maximum capacity.</div>
+      </div>
+      <div class="class-card">
+        <div class="class-icon"><svg class="ico" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+        <div class="class-name">HIIT / Athletic</div>
+        <div class="class-desc">High intensity interval training combined with muscle conditioning. Intermediate/advanced class designed to push you to your highest potential.</div>
+      </div>
+      <div class="class-card">
+        <div class="class-icon"><svg class="ico" viewBox="0 0 24 24"><path d="M6.5 6.5v11M3 9v6M17.5 6.5v11M21 9v6M6.5 12h11"/></svg></div>
+        <div class="class-name">Body Sculpt</div>
+        <div class="class-desc">Strength-building, muscle-toning, and stretching. Uses bands, dumbbells, weight bars, stability balls, and body weight as resistance.</div>
+      </div>
+      <div class="class-card">
+        <div class="class-icon"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.4"/><path d="M12 8.5c-3 1-5 4-7.5 5 2.2 1.2 4.5 1.7 7.5 1.7s5.3-.5 7.5-1.7c-2.5-1-4.5-4-7.5-5z"/></svg></div>
+        <div class="class-name">Yoga &amp; Power Yoga</div>
+        <div class="class-desc">From Hatha and Buti to Power Yoga — classes that align, strengthen, and promote flexibility. All levels welcome with modifications available.</div>
+      </div>
+      <div class="class-card">
+        <div class="class-icon"><svg class="ico" viewBox="0 0 24 24"><circle cx="16.5" cy="8" r="3.2"/><path d="M3 20c1.5-3 4-5 7-5 2 0 3.5.8 4.5 2"/><path d="M9 15l-1.5-3.5 3-1.5"/></svg></div>
+        <div class="class-name">Pilates &amp; On the Ball</div>
+        <div class="class-desc">Core-focused mat pilates and Bosu stability ball workouts. Balance, agility, and whole-body sculpting in a supportive class setting.</div>
+      </div>
+      <div class="class-card">
+        <div class="class-icon"><svg class="ico" viewBox="0 0 24 24"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg></div>
+        <div class="class-name">Zumba Fitness</div>
+        <div class="class-desc">Salsa, merengue, mambo, flamenco, reggaeton, hip hop, and more. The music is motivating and the energy is contagious.</div>
+      </div>
+      <div class="class-card">
+        <div class="class-icon"><svg class="ico" viewBox="0 0 24 24"><path d="M5 4v16M5 4h11l-2 3 2 3H5"/></svg></div>
+        <div class="class-name">Bootcamp</div>
+        <div class="class-desc">Interval training mixing calisthenics, body weight, cardio, and strength. New workout every week — always keeping your body guessing.</div>
+      </div>
+      <div class="class-card">
+        <div class="class-icon"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3c3 4 5 6 5 9.5a5 5 0 01-10 0C7 9 9 7 12 3z"/><path d="M12 21a2.4 2.4 0 002.4-2.4c0-1.7-2.4-2.9-2.4-4.8-1.4 1.4-2.4 2.9-2.4 4.8A2.4 2.4 0 0012 21z"/></svg></div>
+        <div class="class-name">Cardio Sculpt</div>
+        <div class="class-desc">High intensity cardio combined with strength training in a boot camp format. Different format each week, great for all fitness levels.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- PERSONAL TRAINING (dark section) -->
+<section id="training">
+  <div class="container">
+    <div class="training-layout">
+      <div>
+        <p class="section-label">Personal Training</p>
+        <h2 class="section-title">GET THE RESULTS YOU WANT</h2>
+        <p class="section-body" style="margin-bottom: 32px;">Our certified trainers design personalized programs tailored to your goals — whether that's weight loss, injury rehab, strength building, or simply showing up consistently. Ready to get started? Reach out and we'll pair you with the right trainer.</p>
+        <a href="mailto:info@bayshoreac.net" class="btn-primary">Contact Us About Training</a>
+      </div>
+      <div class="training-benefits">
+        <div class="benefit-item">
+          <div class="benefit-num">01</div>
+          <div>
+            <div class="benefit-title">Accountability &amp; Motivation</div>
+            <div class="benefit-body">Your trainer will be there waiting for you with a smile. They help you develop realistic, achievable goals and hold you to them every single session.</div>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-num">02</div>
+          <div>
+            <div class="benefit-title">Real Results, Faster</div>
+            <div class="benefit-body">You'll burn more calories in less time with a personalized program. Achieve goals you simply can't reach training alone.</div>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-num">03</div>
+          <div>
+            <div class="benefit-title">Personalized Program</div>
+            <div class="benefit-body">Whether you want to climb a mountain, recover from an injury, or lose weight — your program is built specifically for you and only you.</div>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-num">04</div>
+          <div>
+            <div class="benefit-title">Injury Prevention &amp; Rehab</div>
+            <div class="benefit-body">Learn to use equipment properly, improve balance, flexibility, and core strength to prevent injuries and support recovery.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CLOSING CTA -->
+<section class="cta-band">
+  <div class="container">
+    <p class="section-label">Get Started</p>
+    <h2 class="section-title">FIND YOUR CLASS</h2>
+    <p class="section-body">Every class is included with membership. Come try one on a free day pass.</p>
+    <div class="cta-actions">
+      <a href="free-pass.html" class="btn-primary">Try It Free</a>
+      <a href="memberships.html" class="btn-outline">View Memberships</a>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Bayshore Athletic Club</div>
+  <div class="footer-links">
+    <a href="classes.html">Classes</a>
+    <a href="memberships.html">Membership</a>
+    <a href="amenities.html">Amenities</a>
+    <a href="contact.html">Contact</a>
+    <a href="free-pass.html">Free Pass</a>
+  </div>
+  <div class="footer-copy">© 2026 Bayshore Athletic Club · 160 Granite St, Braintree MA · <a href="tel:7813565303">781-356-5303</a></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
