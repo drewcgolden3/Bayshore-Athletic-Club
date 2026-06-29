@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amenities | Bayshore Athletic Club</title>
+<meta name="description" content="More than a gym — tanning, smoothie bar, physical therapy, babysitting, and more at Bayshore Athletic Club.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="theme-color" content="#1c1f24">
+</head>
+<body>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">BAYSHORE <span>ATHLETIC CLUB</span></a>
+  <ul class="nav-links">
+    <li><a href="memberships.html">Membership</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="personal-training.html">Personal Training</a></li>
+    <li><a href="amenities.html" class="active">Amenities</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="free-pass.html" class="nav-cta">Free Day Pass</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMobile()">Home</a>
+  <a href="memberships.html" onclick="closeMobile()">Membership</a>
+  <a href="classes.html" onclick="closeMobile()">Classes</a>
+  <a href="personal-training.html" onclick="closeMobile()">Personal Training</a>
+  <a href="amenities.html" onclick="closeMobile()">Amenities</a>
+  <a href="contact.html" onclick="closeMobile()">Contact</a>
+  <a href="free-pass.html" onclick="closeMobile()" style="color:var(--accent)">Free Day Pass</a>
+</div>
+<!-- AMENITIES -->
+<section id="amenities" class="section-first">
+  <div class="container">
+    <div class="amenities-intro">
+      <div>
+        <p class="section-label">Everything You Need</p>
+        <h2 class="section-title">MORE THAN JUST A GYM</h2>
+      </div>
+      <div>
+        <p class="section-body">Bayshore is a true full-service club. Here's everything waiting for you inside — built so fitness fits into your whole life.</p>
+        <a href="memberships.html" class="btn-primary" style="margin-top:28px;">Explore Memberships</a>
+      </div>
+    </div>
+
+    <div class="amenities-features" style="margin-top:24px;">
+
+      <div class="feature">
+        <div class="feature-media">
+          <img class="fm-lead" src="images/gym-floor.jpg" alt="Main gym floor at Bayshore Athletic Club">
+          <div class="fm-row2">
+            <img src="images/gym-cardio.jpg" alt="Cardio area with Matrix equipment">
+            <img src="images/gym-studio.jpg" alt="Cycle and group fitness studio">
+          </div>
+        </div>
+        <div class="feature-content">
+          <p class="feature-index">01</p>
+          <h3 class="feature-name">High-End Full-Service Gym</h3>
+          <p class="feature-desc">Acres of premium Matrix cardio, a complete free-weight and machine floor, and dedicated studio space — all under one roof. Modern, spotless, and room to move no matter how you train.</p>
+          <p class="feature-detail">Cardio · Free Weights · Machines · Studios</p>
+        </div>
+      </div>
+
+      <div class="feature reverse">
+        <div class="feature-media fm-duo">
+          <img src="images/recovery-sauna.jpg" alt="Cedar sauna for recovery">
+          <img src="images/recovery-pt.jpg" alt="On-site physical therapy session">
+        </div>
+        <div class="feature-content">
+          <p class="feature-index">02</p>
+          <h3 class="feature-name">Recovery + Physical Therapy</h3>
+          <p class="feature-desc">Train hard, recover smart. Loosen up in the cedar sauna or work with our on-site physical therapy team for rehab, injury prevention, and getting back to 100%.</p>
+          <p class="feature-detail">Cedar Sauna · On-Site PT · Rehab</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-media fm-trio">
+          <img src="images/lockers-changing.jpg" alt="Private changing rooms">
+          <img src="images/lockers-showers.jpg" alt="Walk-in showers">
+          <img src="images/lockers-vanity.jpg" alt="Vanity and grooming area">
+        </div>
+        <div class="feature-content">
+          <p class="feature-index">03</p>
+          <h3 class="feature-name">Locker Rooms</h3>
+          <p class="feature-desc">Spacious, spotless locker rooms with private changing rooms, walk-in showers, and a finished vanity area — everything you need to get ready in comfort before or after your session.</p>
+          <p class="feature-detail">Private Rooms · Showers · Vanity</p>
+        </div>
+      </div>
+
+      <div class="feature reverse">
+        <div class="feature-media">
+          <img class="fm-single" src="images/smoothie-bar.jpg" alt="Power Blendz smoothie bar">
+        </div>
+        <div class="feature-content">
+          <p class="feature-index">04</p>
+          <h3 class="feature-name">Smoothie Bar</h3>
+          <p class="feature-desc">Refuel without leaving the building. Power Blendz serves protein shakes, smoothies, and grab-and-go drinks made with quality ingredients — right on the floor.</p>
+          <p class="feature-detail">Power Blendz · Shakes · Smoothies</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-media">
+          <img class="fm-single" src="images/babysitting.jpg" alt="Babysitting playroom at Bayshore Athletic Club">
+        </div>
+        <div class="feature-content">
+          <p class="feature-index">05</p>
+          <h3 class="feature-name">Babysitting</h3>
+          <p class="feature-desc">Never skip a workout over childcare again. Our supervised playroom is stocked with toys, books, and plenty of space to play while you train just steps away.</p>
+          <p class="feature-detail">Mon–Thu 4–8PM · $20/child VIP add-on</p>
+        </div>
+      </div>
+
+      <div class="feature reverse">
+        <div class="feature-media">
+          <img class="fm-portrait" src="images/tanning.jpg" alt="Senza Solé tanning booth">
+        </div>
+        <div class="feature-content">
+          <p class="feature-index">06</p>
+          <h3 class="feature-name">Tanning</h3>
+          <p class="feature-desc">Look as good as you feel. Premium Senza Solé UV and spray tanning on-site, included with select memberships.</p>
+          <p class="feature-detail">Senza Solé · UV &amp; Spray</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- CLOSING CTA -->
+<section class="cta-band">
+  <div class="container">
+    <p class="section-label">See For Yourself</p>
+    <h2 class="section-title">COME TAKE A TOUR</h2>
+    <p class="section-body">The best way to see everything is in person. Claim a free day pass and explore.</p>
+    <div class="cta-actions">
+      <a href="free-pass.html" class="btn-primary">Try It Free</a>
+      <a href="memberships.html" class="btn-outline">View Memberships</a>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-row">
+    <div class="footer-logo">Bayshore Athletic Club</div>
+    <div class="footer-links">
+      <a href="classes.html">Classes</a>
+      <a href="personal-training.html">Personal Training</a>
+      <a href="memberships.html">Membership</a>
+      <a href="amenities.html">Amenities</a>
+      <a href="contact.html">Contact</a>
+      <a href="free-pass.html">Free Pass</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/bayshore.athletic.club/" target="_blank" rel="noopener" aria-label="Bayshore Athletic Club on Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.46H15.2c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg></a>
+      <a href="https://www.instagram.com/bayshoreathleticclub/" target="_blank" rel="noopener" aria-label="Bayshore Athletic Club on Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.71.32-.43.17-.74.37-1.05.69-.32.31-.52.62-.69 1.05-.13.33-.28.81-.32 1.71-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.04.9.19 1.38.32 1.71.17.43.37.74.69 1.05.31.32.62.52 1.05.69.33.13.81.28 1.71.32 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.71-.32.43-.17.74-.37 1.05-.69.32-.31.52-.62.69-1.05.13-.33.28-.81.32-1.71.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.32-1.71a2.83 2.83 0 0 0-.69-1.05 2.83 2.83 0 0 0-1.05-.69c-.33-.13-.81-.28-1.71-.32-1.24-.06-1.59-.07-4.74-.07Zm0 3.06A5.04 5.04 0 1 1 12 17.1a5.04 5.04 0 0 1 0-10.08Zm0 1.8a3.24 3.24 0 1 0 0 6.48 3.24 3.24 0 0 0 0-6.48Zm5.24-1.13a1.18 1.18 0 1 1-2.36 0 1.18 1.18 0 0 1 2.36 0Z"/></svg></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Bayshore Athletic Club · 160 Granite St, Braintree MA · <a href="tel:7813565303">781-356-5303</a></span>
+    <span class="footer-credit">Website by <a href="https://switchboardcompany.com" target="_blank" rel="noopener">The Switchboard Co.</a></span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
