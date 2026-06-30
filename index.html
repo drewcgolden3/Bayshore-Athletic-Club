@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bayshore Athletic Club | Braintree, MA</title>
+<meta name="description" content="South Shore's full-service gym in Braintree, MA. Classes, training, tanning, babysitting, and more. Claim a free day pass.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="theme-color" content="#1c1f24">
+</head>
+<body>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">BAYSHORE <span>ATHLETIC CLUB</span></a>
+  <ul class="nav-links">
+    <li><a href="memberships.html">Membership</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="personal-training.html">Personal Training</a></li>
+    <li><a href="amenities.html">Amenities</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="free-pass.html" class="nav-cta">Free Day Pass</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMobile()">Home</a>
+  <a href="memberships.html" onclick="closeMobile()">Membership</a>
+  <a href="classes.html" onclick="closeMobile()">Classes</a>
+  <a href="personal-training.html" onclick="closeMobile()">Personal Training</a>
+  <a href="amenities.html" onclick="closeMobile()">Amenities</a>
+  <a href="contact.html" onclick="closeMobile()">Contact</a>
+  <a href="free-pass.html" onclick="closeMobile()" style="color:var(--accent)">Free Day Pass</a>
+</div>
+<!-- HERO (stays dark for impact) -->
+<section id="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Braintree, MA · South Shore's Best Gym</p>
+    <h1 class="hero-title">IT'S ALL HERE<br>&amp; IT'S ALL<em>ABOUT YOU</em></h1>
+    <p class="hero-sub">A high-end, full-service club — premium gym floor, babysitting, locker rooms, smoothie bar, recovery &amp; physical therapy, and tanning. Everything you need, all under one roof.</p>
+    <div class="hero-actions">
+      <a href="amenities.html" class="btn-primary">Explore the Amenities</a>
+      <a href="free-pass.html" class="btn-outline">Try It Free</a>
+    </div>
+  </div>
+</section>
+<!-- FREE DAY PASS BANNER -->
+<div id="daypass-banner">
+  <div class="banner-text">
+    FREE DAY PASS
+    <span>No commitment. No pressure. Experience Bayshore as a full member.</span>
+  </div>
+  <a href="free-pass.html" class="btn-accent">Claim Your Pass →</a>
+</div>
+<!-- STATS (dark stripe) -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">Years Serving Braintree</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Group Fitness Classes</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5AM</div>
+      <div class="stat-label">Open Weekdays</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4.7<span style="font-size:30px; vertical-align:super;">★</span></div>
+      <div class="stat-label">Google Rating</div>
+    </div>
+  </div>
+</section>
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <p class="section-label">Member Reviews</p>
+    <h2 class="section-title">WHAT OUR<br>MEMBERS SAY</h2>
+
+    <div class="reviews-aggregate">
+      <div class="agg-score">4.7</div>
+      <div>
+        <div class="agg-stars">★★★★★</div>
+        <div class="agg-meta">Average rating on Google</div>
+      </div>
+    </div>
+
+    <!-- Real Google reviews (lightly tightened for length). Order can be changed freely. -->
+    <div class="reviews-grid" style="margin-top:24px;">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"I've been coming to this gym for over 10 years and the new building is amazing! The owner and the staff are all amazing — super accommodating and friendly. For those of you looking for a gym, this is the place. 11/10"</div>
+        <div class="review-author">Jason L.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"The new spot is bright, clean &amp; spacious. You'll never wait for a dumbbell. Locker rooms &amp; showers are pristine. All the hard work and pride of Tim &amp; the Bayshore staff shows. Fresh chapter!"</div>
+        <div class="review-author">Ranee A.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Basically the best gym/fitness center you are going to find near Boston. Super convenient, right off 93. This gym has everything you need and the new location is much nicer. I tried the Y, Crunch, and Planet Fitness — this takes the cake by far."</div>
+        <div class="review-author">Cameron</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Loved the old building but this is BETTER! Great location, easy in and out. Completely renovated, stunning gym! Friendly, awesome staff — come and see for yourself."</div>
+        <div class="review-author">Steve J.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Great energy, great environment, amazing people, and so much variety with the equipment!"</div>
+        <div class="review-author">Enhea P.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:36px;">
+      <!-- TODO: swap for the exact Google reviews deep-link once you have the Place ID -->
+      <a class="reviews-more" href="https://www.google.com/maps/search/?api=1&amp;query=Bayshore+Athletic+Club+Braintree+MA" target="_blank" rel="noopener">Hear what more members have to say →</a>
+    </div>
+  </div>
+</section>
+<!-- CLOSING CTA -->
+<section class="cta-band">
+  <div class="container">
+    <p class="section-label">Get Started</p>
+    <h2 class="section-title">READY WHEN YOU ARE</h2>
+    <p class="section-body">Come see the new building for yourself. Grab a free day pass or pick the plan that fits.</p>
+    <div class="cta-actions">
+      <a href="free-pass.html" class="btn-primary">Try It Free</a>
+      <a href="memberships.html" class="btn-outline">View Memberships</a>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-row">
+    <div class="footer-logo">Bayshore Athletic Club</div>
+    <div class="footer-links">
+      <a href="classes.html">Classes</a>
+      <a href="personal-training.html">Personal Training</a>
+      <a href="memberships.html">Membership</a>
+      <a href="amenities.html">Amenities</a>
+      <a href="contact.html">Contact</a>
+      <a href="free-pass.html">Free Pass</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/bayshore.athletic.club/" target="_blank" rel="noopener" aria-label="Bayshore Athletic Club on Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.46H15.2c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg></a>
+      <a href="https://www.instagram.com/bayshoreathleticclub/" target="_blank" rel="noopener" aria-label="Bayshore Athletic Club on Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.71.32-.43.17-.74.37-1.05.69-.32.31-.52.62-.69 1.05-.13.33-.28.81-.32 1.71-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.04.9.19 1.38.32 1.71.17.43.37.74.69 1.05.31.32.62.52 1.05.69.33.13.81.28 1.71.32 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.71-.32.43-.17.74-.37 1.05-.69.32-.31.52-.62.69-1.05.13-.33.28-.81.32-1.71.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.32-1.71a2.83 2.83 0 0 0-.69-1.05 2.83 2.83 0 0 0-1.05-.69c-.33-.13-.81-.28-1.71-.32-1.24-.06-1.59-.07-4.74-.07Zm0 3.06A5.04 5.04 0 1 1 12 17.1a5.04 5.04 0 0 1 0-10.08Zm0 1.8a3.24 3.24 0 1 0 0 6.48 3.24 3.24 0 0 0 0-6.48Zm5.24-1.13a1.18 1.18 0 1 1-2.36 0 1.18 1.18 0 0 1 2.36 0Z"/></svg></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Bayshore Athletic Club · 160 Granite St, Braintree MA · <a href="tel:7813565303">781-356-5303</a></span>
+    <span class="footer-credit">Website by <a href="https://switchboardcompany.com" target="_blank" rel="noopener">The Switchboard Co.</a></span>
+  </div>
+</footer>
+
+<!-- ===================================================================== -->
+<!-- GYM-CLOSING PROMO POPUP  ·  self-contained · auto-hides after Jul 10  -->
+<!-- ===================================================================== -->
+<style>
+  .bacp-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(12,13,15,.74);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);opacity:0;transition:opacity .28s ease;}
+  .bacp-overlay.is-open{opacity:1;}
+  .bacp-overlay[hidden]{display:none;}
+  .bacp-card{position:relative;width:100%;max-width:460px;background:var(--dark,#1c1f24);color:#fff;border:1px solid rgba(255,255,255,.10);border-radius:18px;overflow:hidden;overflow-y:auto;max-height:calc(100vh - 40px);box-shadow:0 30px 80px rgba(0,0,0,.55);transform:translateY(14px) scale(.98);transition:transform .28s ease;}
+  .bacp-overlay.is-open .bacp-card{transform:none;}
+  .bacp-accent{height:5px;background:linear-gradient(90deg,var(--accent,#c8963a),var(--red,#b83228));}
+  .bacp-close{position:absolute;top:10px;right:12px;z-index:2;width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;font-size:24px;line-height:1;cursor:pointer;transition:background .2s ease;}
+  .bacp-close:hover{background:rgba(255,255,255,.18);}
+  .bacp-body{padding:30px 30px 28px;text-align:center;}
+  .bacp-pill{display:inline-block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--red,#b83228);padding:6px 14px;border-radius:999px;margin-bottom:16px;}
+  .bacp-title{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:40px;line-height:.98;letter-spacing:.01em;margin:0 0 12px;text-transform:uppercase;}
+  .bacp-title span{color:var(--red,#b83228);}
+  .bacp-lead{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.5;color:rgba(255,255,255,.82);margin:0 auto 22px;max-width:36ch;}
+  .bacp-lead strong{color:var(--accent-lt,#d9aa5a);font-weight:600;}
+  .bacp-offers{display:flex;gap:12px;margin-bottom:20px;}
+  .bacp-offer{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:14px 10px;}
+  .bacp-offer-big{font-family:'Bebas Neue',sans-serif;font-size:38px;line-height:1;color:var(--accent,#c8963a);}
+  .bacp-offer-sub{font-family:'DM Sans',sans-serif;font-size:12px;line-height:1.35;color:rgba(255,255,255,.78);margin-top:4px;}
+  .bacp-offer-sub strong{color:#fff;white-space:nowrap;}
+  .bacp-perks{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;text-align:left;}
+  .bacp-perks li{position:relative;padding-left:20px;font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(255,255,255,.85);}
+  .bacp-perks li::before{content:"";position:absolute;left:0;top:6px;width:8px;height:8px;border-radius:50%;background:var(--accent,#c8963a);}
+  .bacp-actions{display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
+  .bacp-btn-primary{display:block;font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;background:var(--accent,#c8963a);color:#1c1f24;text-decoration:none;padding:14px 18px;border-radius:10px;transition:background .2s ease;}
+  .bacp-btn-primary:hover{background:var(--accent-lt,#d9aa5a);}
+  .bacp-btn-ghost{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;color:rgba(255,255,255,.85);text-decoration:none;padding:11px 18px;border-radius:10px;border:1px solid rgba(255,255,255,.18);transition:border-color .2s ease,color .2s ease;}
+  .bacp-btn-ghost:hover{border-color:var(--accent,#c8963a);color:#fff;}
+  .bacp-addr{font-family:'DM Sans',sans-serif;font-size:12.5px;letter-spacing:.02em;color:rgba(255,255,255,.62);margin:0;display:flex;align-items:center;justify-content:center;gap:6px;}
+  .bacp-addr svg{flex:none;color:var(--red,#b83228);}
+  body.bacp-lock{overflow:hidden;}
+  @media (max-width:420px){
+    .bacp-body{padding:26px 20px 24px;}
+    .bacp-title{font-size:34px;}
+    .bacp-offers{gap:10px;}
+    .bacp-offer-big{font-size:32px;}
+  }
+</style>
+
+<div id="bacPromoOverlay" class="bacp-overlay" role="dialog" aria-modal="true" aria-labelledby="bacpTitle" hidden>
+  <div class="bacp-card">
+    <button type="button" class="bacp-close" id="bacpClose" aria-label="Close">&times;</button>
+    <div class="bacp-accent"></div>
+    <div class="bacp-body">
+      <span class="bacp-pill">★ Limited-Time Offer</span>
+      <h2 id="bacpTitle" class="bacp-title">Sorry to hear your<br><span>gym is closing</span></h2>
+      <p class="bacp-lead">Come try us out on a <strong>FREE day</strong> — and we've <strong>extended our promotion</strong> just for you.</p>
+
+      <div class="bacp-offers">
+        <div class="bacp-offer">
+          <div class="bacp-offer-big">NO</div>
+          <div class="bacp-offer-sub">Enrollment Fee</div>
+        </div>
+        <div class="bacp-offer">
+          <div class="bacp-offer-big">VIP</div>
+          <div class="bacp-offer-sub">Membership until<br><strong>July 10th</strong></div>
+        </div>
+      </div>
+
+      <ul class="bacp-perks">
+        <li>State-of-the-art equipment</li>
+        <li>Clean &amp; modern facility</li>
+        <li>Sauna &amp; locker rooms</li>
+        <li>Friendly staff &amp; community</li>
+      </ul>
+
+      <div class="bacp-actions">
+        <a href="free-pass.html" class="bacp-btn-primary">Claim Your Free Day Pass →</a>
+        <a href="memberships.html" class="bacp-btn-ghost">See Memberships</a>
+      </div>
+
+      <p class="bacp-addr">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+        160 Granite St, Braintree, MA 02184
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    /* ===== PROMO POPUP — auto-hides when the promotion ends ===================
+       The popup shows THROUGH July 10, 2026 and stops appearing on July 11, 2026.
+       To change the cutoff, edit the date below: new Date(YEAR, MONTH_INDEX, DAY).
+       Months are 0-indexed, so 6 = July. This is the first day it will NOT show.
+       (e.g. for it to vanish at the start of July 10, use new Date(2026, 6, 10).) */
+    var PROMO_HIDE_ON = new Date(2026, 6, 11, 0, 0, 0);
+    if (new Date() >= PROMO_HIDE_ON) return; /* promotion over — never show */
+
+    var overlay  = document.getElementById('bacPromoOverlay');
+    if (!overlay) return;
+    var closeBtn = document.getElementById('bacpClose');
+
+    function openPopup(){
+      overlay.hidden = false;
+      void overlay.offsetWidth;            /* reflow so the transition runs */
+      overlay.classList.add('is-open');
+      document.body.classList.add('bacp-lock');
+    }
+    function closePopup(){
+      overlay.classList.remove('is-open');
+      document.body.classList.remove('bacp-lock');
+      setTimeout(function(){ overlay.hidden = true; }, 300);
+    }
+
+    closeBtn.addEventListener('click', closePopup);
+    overlay.addEventListener('click', function(e){ if (e.target === overlay) closePopup(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !overlay.hidden) closePopup(); });
+
+    window.addEventListener('load', function(){ setTimeout(openPopup, 1100); });
+  })();
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
