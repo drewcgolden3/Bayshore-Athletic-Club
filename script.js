@@ -82,7 +82,7 @@
       '.section-label', '.section-title', '.section-body',
       '.plan-card', '.class-card', '.review-card', '.paid-item', '.amenity-item',
       '.benefit-item', '.stat-item', '.feature', '.trainer-card',
-      '.reviews-aggregate', '.daypass-steps .step', '.daypass-form-wrap',
+      '.reviews-aggregate', '.daypass-steps .step',
       '.insurance-note', '.hours-table', '.contact-item'
     ].join(', ');
 
