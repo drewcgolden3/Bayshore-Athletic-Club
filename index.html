@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=4">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -170,7 +170,16 @@
         </span>
       </a>
       <a href="personal-training.html" class="explore-card">
-        <img class="explore-media" src="images/gym-floor.jpg" alt="Training floor at Bayshore Athletic Club" loading="lazy" decoding="async">
+        <!-- The four trainers as one tile. These use purpose-cut 4:3 crops
+             (images/*-tile.jpg, generated from the portraits on the Personal
+             Training page) rather than the originals, so each person is framed
+             deliberately instead of however a centre crop happened to land. -->
+        <span class="explore-mosaic" role="img" aria-label="The four personal trainers at Bayshore Athletic Club">
+          <span class="mosaic-pane"><img src="images/trainer-christine-tile.jpg" alt="" loading="lazy" decoding="async"></span>
+          <span class="mosaic-pane"><img src="images/trainer-korina-tile.jpg" alt="" loading="lazy" decoding="async"></span>
+          <span class="mosaic-pane"><img src="images/trainer-laurie-tile.jpg" alt="" loading="lazy" decoding="async"></span>
+          <span class="mosaic-pane"><img src="images/trainer-josh-tile.jpg" alt="" loading="lazy" decoding="async"></span>
+        </span>
         <span class="explore-body">
           <span class="explore-name">Personal Training</span>
           <span class="explore-desc">Certified trainers who build the plan around you. Start with a free assessment.</span>
@@ -280,6 +289,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=3"></script>
+<script src="script.js?v=4"></script>
 </body>
 </html>
