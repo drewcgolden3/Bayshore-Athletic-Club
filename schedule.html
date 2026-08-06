@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="styles.css?v=3">
 <style>
   /* ── SCHEDULE (page-specific overrides on top of styles.css) ── */
   #schedule { background: var(--bg-alt); padding: clamp(128px, 15vw, 168px) 0 clamp(84px, 10vw, 120px); }
@@ -175,7 +175,32 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="index.html" class="nav-logo">BAYSHORE <span>ATHLETIC CLUB</span></a>
+  <a href="index.html" class="nav-logo" aria-label="Bayshore Athletic Club — home">
+    <svg class="nav-logo-mark" viewBox="0 0 400 400" role="img" aria-label="Bayshore Athletic Club">
+      <defs>
+        <path id="navArcTop" d="M 200,200 m -132,0 a 132,132 0 0 1 264,0" />
+        <path id="navArcBottom" d="M 200,200 m -152,0 a 152,152 0 0 0 304,0" />
+      </defs>
+      <circle cx="200" cy="200" r="192" fill="none" stroke="currentColor" stroke-width="10" />
+      <circle cx="200" cy="200" r="173" fill="none" stroke="currentColor" stroke-width="3.5" />
+      <text class="badge-arc" fill="currentColor">
+        <textPath href="#navArcTop" startOffset="50%" text-anchor="middle">ATHLETIC</textPath>
+      </text>
+      <text class="badge-arc" fill="currentColor">
+        <textPath href="#navArcBottom" startOffset="50%" text-anchor="middle">CLUB</textPath>
+      </text>
+      <rect x="147" y="113" width="106" height="3.5" fill="currentColor" />
+      <text class="badge-since" x="200" y="152" text-anchor="middle" fill="currentColor">SINCE 1994</text>
+      <text class="badge-word" x="200" y="222" text-anchor="middle" fill="currentColor">BAYSHORE</text>
+      <g fill="currentColor">
+        <rect x="114" y="239" width="8" height="44" />
+        <rect x="126" y="232" width="14" height="58" />
+        <rect x="140" y="254" width="120" height="14" />
+        <rect x="260" y="232" width="14" height="58" />
+        <rect x="278" y="239" width="8" height="44" />
+      </g>
+    </svg>
+  </a>
   <ul class="nav-links">
     <li><a href="memberships.html">Membership</a></li>
     <li><a href="classes.html" class="active">Classes</a></li>
@@ -240,7 +265,7 @@
   </div>
 </footer>
 
-<script src="script.js?v=2"></script>
+<script src="script.js?v=3"></script>
 
 <!-- SCHEDULE SCRIPT -->
 <script>
