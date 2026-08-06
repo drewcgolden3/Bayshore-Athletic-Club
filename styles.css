@@ -219,12 +219,22 @@
     opacity: 0; animation: fadeUp 1s 0.72s var(--ease-expo) forwards;
   }
 
-  /* On dark backgrounds the light bronze carries the fill and the ink sits on
-     top; the deep bronze is for the light pages. */
-  #hero .btn-primary, .cta-band .btn-primary {
+  /* ── BRONZE ON DARK ──
+     Every filled bronze button that sits on a dark section, in one place, so
+     the two tones can't drift apart again. Dark sections take the light bronze
+     with dark ink (deep bronze on near-black is only 3.35:1); light sections
+     keep the deep bronze with white, which is the pairing that passes there.
+     Dark sections are #hero, #daypass-banner, #stats, #training, .cta-band. */
+  #hero .btn-primary,
+  .cta-band .btn-primary,
+  #training .btn-primary,
+  #daypass-banner .btn-accent {
     background: var(--accent-lt); color: var(--dark);
   }
-  #hero .btn-primary:hover, .cta-band .btn-primary:hover {
+  #hero .btn-primary:hover,
+  .cta-band .btn-primary:hover,
+  #training .btn-primary:hover,
+  #daypass-banner .btn-accent:hover {
     background: #d9b04a; box-shadow: 0 12px 30px rgba(0,0,0,0.4);
   }
 
