@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=11">
+<link rel="stylesheet" href="styles.css?v=12">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -91,20 +91,21 @@
            wide hero far better. The badge stays in the nav. Inlined rather than
            <img> so it inherits the page's fonts and takes its colour from CSS. -->
       <div class="hero-logo">
-      <svg class="hero-lockup-mark" viewBox="0 0 620 228" role="img" aria-label="Bayshore Athletic Club — since 1994">
-      <text class="lock-since" x="310" y="28" text-anchor="middle" fill="currentColor">SINCE 1994</text>
-      <text class="lock-word" x="310" y="118" text-anchor="middle" fill="currentColor">BAYSHORE</text>
-      <!-- Dumbbell centred on y=156, in the band between the wordmark baseline
-           (118) and the ATHLETIC CLUB cap line (~192). Symmetric about x=310:
-           18px of air above it, 16px below, so it reads as one tight stack. -->
+      <svg class="hero-lockup-mark" viewBox="0 0 620 238" role="img" aria-label="Bayshore Athletic Club — since 1994">
+      <!-- Even vertical rhythm, measured off cap heights rather than baselines:
+           16px above SINCE, 18px from its baseline to the wordmark cap, 18px
+           from the wordmark baseline to the dumbbell, 16px from the dumbbell to
+           the ATHLETIC CLUB cap, 17px below it. -->
+      <text class="lock-since" x="310" y="31" text-anchor="middle" fill="currentColor">SINCE 1994</text>
+      <text class="lock-word" x="310" y="129" text-anchor="middle" fill="currentColor">BAYSHORE</text>
       <g fill="currentColor">
-        <rect x="172" y="143" width="12" height="26" />
-        <rect x="190" y="136" width="22" height="40" />
-        <rect x="212" y="149" width="196" height="14" />
-        <rect x="408" y="136" width="22" height="40" />
-        <rect x="436" y="143" width="12" height="26" />
+        <rect x="172" y="154" width="12" height="26" />
+        <rect x="190" y="147" width="22" height="40" />
+        <rect x="212" y="160" width="196" height="14" />
+        <rect x="408" y="147" width="22" height="40" />
+        <rect x="436" y="154" width="12" height="26" />
       </g>
-      <text class="lock-sub" x="310" y="210" text-anchor="middle" fill="currentColor">ATHLETIC CLUB</text>
+      <text class="lock-sub" x="310" y="221" text-anchor="middle" fill="currentColor">ATHLETIC CLUB</text>
     </svg>
       </div>
 
@@ -282,6 +283,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=11"></script>
+<script src="script.js?v=12"></script>
 </body>
 </html>
