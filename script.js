@@ -92,6 +92,77 @@
     }
   }
 
+  // ── Amenities lightbox ──
+  // Any image inside a .feature-media block opens full-size on click. Built
+  // once per page and shared by every image, with prev/next cycling through
+  // them in document order.
+  (function () {
+    var imgs = Array.prototype.slice.call(document.querySelectorAll('.feature-media img'));
+    if (!imgs.length) return;
+
+    var overlay = document.createElement('div');
+    overlay.className = 'lb-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Image viewer');
+    overlay.hidden = true;
+    overlay.innerHTML =
+      '<button type="button" class="lb-close" aria-label="Close image">&times;</button>' +
+      '<button type="button" class="lb-prev" aria-label="Previous image">&#8249;</button>' +
+      '<figure class="lb-figure"><img class="lb-img" alt=""><figcaption class="lb-caption"></figcaption></figure>' +
+      '<button type="button" class="lb-next" aria-label="Next image">&#8250;</button>';
+    document.body.appendChild(overlay);
+
+    var lbImg = overlay.querySelector('.lb-img');
+    var lbCap = overlay.querySelector('.lb-caption');
+    var closeBtn = overlay.querySelector('.lb-close');
+    var current = 0;
+    var lastFocus = null;
+
+    function show(i) {
+      current = (i + imgs.length) % imgs.length;
+      lbImg.src = imgs[current].currentSrc || imgs[current].src;
+      lbImg.alt = imgs[current].alt || '';
+      lbCap.textContent = imgs[current].alt || '';
+    }
+    function openLb(i) {
+      lastFocus = document.activeElement;
+      show(i);
+      overlay.hidden = false;
+      requestAnimationFrame(function () { overlay.classList.add('open'); });
+      document.body.classList.add('lb-lock');
+      closeBtn.focus();
+    }
+    function closeLb() {
+      overlay.classList.remove('open');
+      document.body.classList.remove('lb-lock');
+      setTimeout(function () { overlay.hidden = true; lbImg.removeAttribute('src'); }, 250);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    imgs.forEach(function (img, i) {
+      img.classList.add('lb-zoomable');
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
+      img.setAttribute('aria-label', 'Enlarge: ' + (img.alt || 'photo'));
+      img.addEventListener('click', function () { openLb(i); });
+      img.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(i); }
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLb);
+    overlay.querySelector('.lb-prev').addEventListener('click', function () { show(current - 1); });
+    overlay.querySelector('.lb-next').addEventListener('click', function () { show(current + 1); });
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) closeLb(); });
+    document.addEventListener('keydown', function (e) {
+      if (overlay.hidden) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowLeft') show(current - 1);
+      if (e.key === 'ArrowRight') show(current + 1);
+    });
+  })();
+
   // ─────────────────────────────────────────────────────────────
   //  Premium motion layer — nav elevate + staggered scroll reveal.
   //  Native scrolling only; no smooth-scroll library.
