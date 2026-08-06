@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="styles.css?v=8">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -87,42 +87,33 @@
 
   <div class="hero-inner">
     <div class="hero-content">
-      <p class="hero-eyebrow"><span class="hero-rule" aria-hidden="true"></span>Braintree, MA · Since 1994</p>
-      <h1 class="hero-title">EVERYTHING<br>UNDER ONE<br>ROOF</h1>
-      <p class="hero-sub">Premium gym floor, group classes, recovery and physical therapy, locker rooms, smoothie bar, babysitting, tanning.</p>
+      <!-- Horizontal lockup, not the circular badge — it holds the centre of a
+           wide hero far better. The badge stays in the nav. Inlined rather than
+           <img> so it inherits the page's fonts and takes its colour from CSS. -->
+      <div class="hero-logo">
+      <svg class="hero-lockup-mark" viewBox="0 0 620 228" role="img" aria-label="Bayshore Athletic Club — since 1994">
+      <text class="lock-since" x="310" y="28" text-anchor="middle" fill="currentColor">SINCE 1994</text>
+      <text class="lock-word" x="310" y="118" text-anchor="middle" fill="currentColor">BAYSHORE</text>
+      <!-- Dumbbell centred on y=156, in the band between the wordmark baseline
+           (118) and the ATHLETIC CLUB cap line (~192). Symmetric about x=310:
+           18px of air above it, 16px below, so it reads as one tight stack. -->
+      <g fill="currentColor">
+        <rect x="172" y="143" width="12" height="26" />
+        <rect x="190" y="136" width="22" height="40" />
+        <rect x="212" y="149" width="196" height="14" />
+        <rect x="408" y="136" width="22" height="40" />
+        <rect x="436" y="143" width="12" height="26" />
+      </g>
+      <text class="lock-sub" x="310" y="210" text-anchor="middle" fill="currentColor">ATHLETIC CLUB</text>
+    </svg>
+      </div>
+
+      <h1 class="hero-sub">Premium gym floor, group classes, recovery and physical therapy, locker rooms, smoothie bar, babysitting, tanning.</h1>
       <div class="hero-actions">
         <a href="amenities.html" class="btn-primary">Explore the Amenities</a>
         <a href="free-pass.html" class="btn-outline">Try It Free</a>
       </div>
-    </div>
-
-    <!-- Club badge. Inlined rather than <img> so it inherits the page's loaded
-         webfonts and takes its colour from CSS (white here, over the photo). -->
-    <div class="hero-logo">
-      <svg class="hero-logo-mark" viewBox="0 0 400 400" role="img" aria-label="Bayshore Athletic Club — since 1994">
-      <defs>
-        <path id="heroArcTop" d="M 200,200 m -132,0 a 132,132 0 0 1 264,0" />
-        <path id="heroArcBottom" d="M 200,200 m -152,0 a 152,152 0 0 0 304,0" />
-      </defs>
-      <circle cx="200" cy="200" r="192" fill="none" stroke="currentColor" stroke-width="10" />
-      <circle cx="200" cy="200" r="173" fill="none" stroke="currentColor" stroke-width="3.5" />
-      <text class="badge-arc" fill="currentColor">
-        <textPath href="#heroArcTop" startOffset="50%" text-anchor="middle">ATHLETIC</textPath>
-      </text>
-      <text class="badge-arc" fill="currentColor">
-        <textPath href="#heroArcBottom" startOffset="50%" text-anchor="middle">CLUB</textPath>
-      </text>
-      <rect x="147" y="113" width="106" height="3.5" fill="currentColor" />
-      <text class="badge-since" x="200" y="152" text-anchor="middle" fill="currentColor">SINCE 1994</text>
-      <text class="badge-word" x="200" y="222" text-anchor="middle" fill="currentColor">BAYSHORE</text>
-      <g fill="currentColor">
-        <rect x="114" y="239" width="8" height="44" />
-        <rect x="126" y="232" width="14" height="58" />
-        <rect x="140" y="254" width="120" height="14" />
-        <rect x="260" y="232" width="14" height="58" />
-        <rect x="278" y="239" width="8" height="44" />
-      </g>
-    </svg>
+      <p class="hero-trust">Braintree, MA · Serving the South Shore since 1994</p>
     </div>
   </div>
 </section>
@@ -291,6 +282,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=7"></script>
+<script src="script.js?v=8"></script>
 </body>
 </html>
