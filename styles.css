@@ -110,6 +110,31 @@
   }
   .nav-cta:hover { background: #d9b04a; box-shadow: 0 8px 22px rgba(0,0,0,0.35); transform: translateY(-1px); }
 
+  /* ── LIGHT NAV (interior pages) ──
+     The dark bar earns its place over the hero photo; on a cream page it just
+     sits there as a black slab. Interior pages get the same bar in reverse:
+     cream ground, ink links, deep bronze CTA — the pairing that passes on
+     light. Home keeps the dark nav. */
+  nav.nav--light {
+    background: rgba(244,241,237,0.92);
+    border-bottom-color: var(--border-lt);
+  }
+  nav.nav--light.scrolled {
+    border-bottom-color: var(--border);
+    box-shadow: 0 10px 30px rgba(27,30,35,0.07);
+  }
+  nav.nav--light .nav-logo { color: var(--dark); }
+  nav.nav--light .nav-logo:hover .nav-logo-mark { color: var(--accent-deep); }
+  nav.nav--light .nav-links a { color: var(--ink); }
+  nav.nav--light .nav-links a:hover,
+  nav.nav--light .nav-links a.active { color: var(--accent-deep); }
+  nav.nav--light .nav-links a:not(.nav-cta)::after { background: var(--accent-deep); }
+  nav.nav--light .nav-cta {
+    background: var(--accent); color: var(--white) !important;
+  }
+  nav.nav--light .nav-cta:hover { background: var(--accent-deep); box-shadow: 0 8px 22px rgba(27,30,35,0.22); }
+  nav.nav--light .hamburger span { background: var(--ink); }
+
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; margin: -6px; }
   .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: 0.4s var(--ease-expo); }
 
@@ -130,7 +155,7 @@
     position: absolute; inset: -4%;
     background-image: url('images/gym-interior.jpg');
     background-size: cover; background-position: center;
-    filter: brightness(0.46) saturate(0.9) contrast(1.04);
+    filter: brightness(0.64) saturate(1.02) contrast(1.02);
     transform: scale(1.06);
     animation: heroDrift 22s ease-in-out infinite alternate;
     will-change: transform;
@@ -138,10 +163,14 @@
   .hero-bg {
     position: absolute; inset: 0;
     background:
-      /* Centred content, so the scrim is even again — weighted top and bottom
-         rather than to one side. */
-      linear-gradient(180deg, rgba(16,18,21,0.62) 0%, rgba(16,18,21,0.34) 44%, rgba(16,18,21,0.78) 100%),
-      radial-gradient(ellipse 70% 58% at 50% 50%, rgba(16,18,21,0.42) 0%, transparent 78%);
+      /* Lighter than before, and part of the darkening traded for warmth. The
+         vertical pass still anchors the nav at the top and the section join at
+         the bottom; the middle stays open so the room reads as a bright gym
+         rather than a night shot. The bronze wash is doing the "inviting" —
+         a neutral grey scrim at this opacity just looked flat. */
+      linear-gradient(180deg, rgba(16,18,21,0.58) 0%, rgba(16,18,21,0.20) 46%, rgba(16,18,21,0.66) 100%),
+      radial-gradient(ellipse 74% 62% at 50% 50%, rgba(16,18,21,0.30) 0%, transparent 78%),
+      radial-gradient(ellipse 86% 74% at 50% 56%, rgba(138,106,28,0.16) 0%, transparent 72%);
   }
 
   .hero-content {
