@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="styles.css?v=7">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -78,14 +78,24 @@
   <a href="personal-training.html" onclick="closeMobile()">Personal Training</a>
   <a href="amenities.html" onclick="closeMobile()">Amenities</a>
   <a href="contact.html" onclick="closeMobile()">Contact</a>
-  <a href="free-pass.html" onclick="closeMobile()" style="color:var(--accent)">Free Day Pass</a>
+  <a href="free-pass.html" onclick="closeMobile()" style="color:var(--accent-lt)">Free Day Pass</a>
 </div>
 <!-- HERO (stays dark for impact) -->
 <section id="hero">
   <div class="hero-photo"></div>
   <div class="hero-bg"></div>
 
-  <div class="hero-content">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-eyebrow"><span class="hero-rule" aria-hidden="true"></span>Braintree, MA · Since 1994</p>
+      <h1 class="hero-title">EVERYTHING<br>UNDER ONE<br>ROOF</h1>
+      <p class="hero-sub">Premium gym floor, group classes, recovery and physical therapy, locker rooms, smoothie bar, babysitting, tanning.</p>
+      <div class="hero-actions">
+        <a href="amenities.html" class="btn-primary">Explore the Amenities</a>
+        <a href="free-pass.html" class="btn-outline">Try It Free</a>
+      </div>
+    </div>
+
     <!-- Club badge. Inlined rather than <img> so it inherits the page's loaded
          webfonts and takes its colour from CSS (white here, over the photo). -->
     <div class="hero-logo">
@@ -114,15 +124,6 @@
       </g>
     </svg>
     </div>
-
-    <!-- The badge carries the name, so the tagline is the h1 — a page still
-         needs one, and it should be the thing that describes the club. -->
-    <h1 class="hero-sub">A high-end, full-service club — premium gym floor, babysitting, locker rooms, smoothie bar, recovery &amp; physical therapy, and tanning. Everything you need, all under one roof.</h1>
-    <div class="hero-actions">
-      <a href="amenities.html" class="btn-primary">Explore the Amenities</a>
-      <a href="free-pass.html" class="btn-outline">Try It Free</a>
-    </div>
-    <p class="hero-trust">Braintree, MA · Serving the South Shore since 1994</p>
   </div>
 </section>
 <!-- FREE DAY PASS BANNER -->
@@ -158,7 +159,7 @@
 <section id="explore">
   <div class="container">
     <p class="section-label">Explore the Club</p>
-    <h2 class="section-title">EVERYTHING UNDER<br>ONE ROOF</h2>
+    <h2 class="section-title">WHAT'S<br>INSIDE</h2>
     <p class="section-body">A premium gym floor, a full class schedule, certified trainers, and the extras most gyms don't bother with.</p>
 
     <div class="explore-grid">
@@ -290,6 +291,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=6"></script>
+<script src="script.js?v=7"></script>
 </body>
 </html>
