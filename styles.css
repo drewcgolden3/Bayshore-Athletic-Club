@@ -313,6 +313,24 @@
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 22px; margin-bottom: 52px;
   }
+  /* Four-up plan row. Its own class rather than a .plans-grid modifier — the
+     two-up grid has responsive rules further down that would otherwise win on
+     equal specificity and collapse this to one column at 900px. */
+  .plan-grid-4 {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 18px; margin-bottom: 52px; align-items: stretch;
+  }
+  .plan-grid-4 .plan-card { display: flex; flex-direction: column; padding: 44px 28px; }
+  .plan-grid-4 .plan-name { font-size: 29px; line-height: 1.04; margin-bottom: 10px; }
+  .plan-grid-4 .plan-price { font-size: 44px; }
+  .plan-grid-4 .plan-price sup { font-size: 20px; }
+  .plan-grid-4 .plan-price sub { display: block; font-size: 13px; margin-top: 6px; }
+  .plan-grid-4 .plan-desc { margin-bottom: 24px; }
+  .plan-grid-4 .plan-features { margin-bottom: 28px; flex: 1; }
+  .plan-grid-4 .plan-features li { font-size: 13.5px; padding: 9px 0; }
+  @media (max-width: 1080px) { .plan-grid-4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px)  { .plan-grid-4 { grid-template-columns: 1fr; } }
+
   .plan-card {
     background: var(--bg-card); padding: 50px 42px;
     position: relative; border: 1px solid var(--border);
