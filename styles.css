@@ -11,9 +11,9 @@
     --muted:     #797e86;
     --border:    rgba(27,30,35,0.09);
     --border-lt: rgba(27,30,35,0.06);
-    --accent:    #c0902f;
-    --accent-lt: #d6a752;
-    --accent-deep: #a4791f;
+    --accent:    #8a6a1c;
+    --accent-lt: #c49a35;
+    --accent-deep: #75591a;
     --white:     #fffdfa;
     --red:       #b0362a;
 
@@ -26,7 +26,7 @@
     --shadow-sm: 0 1px 2px rgba(27,30,35,0.04), 0 2px 8px rgba(27,30,35,0.05);
     --shadow-md: 0 6px 18px rgba(27,30,35,0.06), 0 16px 40px rgba(27,30,35,0.07);
     --shadow-lg: 0 12px 32px rgba(27,30,35,0.09), 0 32px 64px rgba(27,30,35,0.11);
-    --shadow-gold: 0 12px 30px rgba(192,144,47,0.24);
+    --shadow-gold: 0 12px 30px rgba(138,106,28,0.24);
 
     --nav-h: 78px;
 
@@ -45,7 +45,7 @@
     text-rendering: optimizeLegibility;
   }
 
-  ::selection { background: rgba(192,144,47,0.22); color: var(--ink); }
+  ::selection { background: rgba(138,106,28,0.22); color: var(--ink); }
 
   a:focus-visible, button:focus-visible, input:focus-visible {
     outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px;
@@ -56,7 +56,10 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 clamp(20px, 4vw, 48px); height: var(--nav-h);
-    background: rgba(244,241,237,0.66);
+    /* Was 0.66, which let the dark hero photo bleed through and washed the
+       links out until you scrolled. 0.86 keeps the glassy blur but holds the
+       bar light enough that the links read at full strength from the top. */
+    background: rgba(244,241,237,0.86);
     backdrop-filter: blur(16px) saturate(1.15);
     -webkit-backdrop-filter: blur(16px) saturate(1.15);
     border-bottom: 1px solid transparent;
@@ -80,7 +83,7 @@
   .nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
   .nav-links a {
     position: relative;
-    text-decoration: none; color: var(--ink-mid);
+    text-decoration: none; color: var(--ink);
     font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
     transition: color 0.3s var(--ease-soft); white-space: nowrap;
   }
@@ -91,7 +94,9 @@
   }
   .nav-links a:not(.nav-cta):hover::after,
   .nav-links a:not(.nav-cta).active::after { transform: scaleX(1); }
-  .nav-links a:hover { color: var(--accent); }
+  /* accent-deep, not accent — the bar is light in both states, so the darker
+     tone is the one that stays legible on hover. */
+  .nav-links a:hover { color: var(--accent-deep); }
   .nav-cta {
     background: var(--dark); color: var(--white) !important;
     padding: 11px 24px; font-weight: 600 !important;
@@ -125,7 +130,7 @@
     position: absolute; inset: 0;
     background:
       linear-gradient(180deg, rgba(19,22,25,0.62) 0%, rgba(19,22,25,0.28) 44%, rgba(19,22,25,0.80) 100%),
-      radial-gradient(ellipse 68% 52% at 50% 62%, rgba(192,144,47,0.18) 0%, transparent 72%);
+      radial-gradient(ellipse 68% 52% at 50% 62%, rgba(138,106,28,0.18) 0%, transparent 72%);
   }
 
   .hero-content {
@@ -197,7 +202,7 @@
     transition: border-color 0.4s var(--ease-soft), color 0.4s var(--ease-soft),
                 background 0.4s var(--ease-soft), transform 0.45s var(--ease-expo);
   }
-  .btn-outline:hover { border-color: var(--accent-lt); color: var(--accent-lt); background: rgba(192,144,47,0.06); transform: translateY(-2px); }
+  .btn-outline:hover { border-color: var(--accent-lt); color: var(--accent-lt); background: rgba(138,106,28,0.06); transform: translateY(-2px); }
 
   /* Light btn-outline for light sections */
   .btn-outline-dark {
@@ -208,7 +213,7 @@
     transition: border-color 0.4s var(--ease-soft), color 0.4s var(--ease-soft),
                 background 0.4s var(--ease-soft), transform 0.45s var(--ease-expo);
   }
-  .btn-outline-dark:hover { border-color: var(--accent); color: var(--accent); background: rgba(192,144,47,0.05); transform: translateY(-2px); }
+  .btn-outline-dark:hover { border-color: var(--accent); color: var(--accent); background: rgba(138,106,28,0.05); transform: translateY(-2px); }
 
   /* ── DAY PASS BANNER ── */
   #daypass-banner {
@@ -276,7 +281,7 @@
     transition: box-shadow 0.5s var(--ease-expo), transform 0.5s var(--ease-expo), border-color 0.5s var(--ease-soft);
   }
   .plan-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-5px); border-color: var(--border-lt); }
-  .plan-card.featured { border-color: rgba(192,144,47,0.55); box-shadow: 0 0 0 1px rgba(192,144,47,0.18); }
+  .plan-card.featured { border-color: rgba(138,106,28,0.55); box-shadow: 0 0 0 1px rgba(138,106,28,0.18); }
   .plan-badge {
     position: absolute; top: 0; right: 32px;
     background: var(--accent); color: var(--white);
@@ -322,7 +327,7 @@
   .paid-note { font-size: 12px; color: var(--muted); margin-top: 4px; }
 
   .insurance-note {
-    background: rgba(192,144,47,0.06); border-left: 3px solid var(--accent);
+    background: rgba(138,106,28,0.06); border-left: 3px solid var(--accent);
     padding: 22px 26px; margin-top: 34px;
     font-size: 14px; color: var(--ink-mid); line-height: 1.65;
   }
@@ -476,7 +481,7 @@
     outline: none; width: 100%; color: var(--ink);
     transition: border-color 0.3s var(--ease-soft), box-shadow 0.3s var(--ease-soft);
   }
-  .form-fields input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(192,144,47,0.12); }
+  .form-fields input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(138,106,28,0.12); }
   .btn-submit {
     background: var(--dark); color: var(--white);
     padding: 17px; font-size: 12px; font-weight: 700;
