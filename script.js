@@ -63,7 +63,8 @@
   }
 
   // ─────────────────────────────────────────────────────────────
-  //  Premium motion layer — nav elevate, scroll reveal, smooth scroll
+  //  Premium motion layer — nav elevate + staggered scroll reveal.
+  //  Native scrolling only; no smooth-scroll library.
   //  All gated behind prefers-reduced-motion for accessibility.
   // ─────────────────────────────────────────────────────────────
   (function () {
@@ -75,23 +76,40 @@
     setNav(window.scrollY || 0);
     window.addEventListener('scroll', () => setNav(window.scrollY), { passive: true });
 
-    if (reduce) return; // honor reduced motion — no transforms, no smooth scroll
+    if (reduce) return; // honor reduced motion — no transforms, no reveal
 
     // ── Staggered scroll-reveal (fade + rise, expo-out) ──
+    // The hidden state is a CSS class gated on html.js-reveal, not an inline
+    // style. If this script never runs, nothing is ever hidden and the page
+    // renders in full instead of blank below the hero.
     const revealSel = [
       '.section-label', '.section-title', '.section-body',
       '.plan-card', '.class-card', '.review-card', '.paid-item', '.amenity-item',
-      '.benefit-item', '.stat-item', '.feature', '.trainer-card',
+      '.benefit-item', '.stat-item', '.feature', '.trainer-card', '.explore-card',
       '.reviews-aggregate', '.daypass-steps .step',
       '.insurance-note', '.hours-table', '.contact-item'
     ].join(', ');
 
     const els = Array.from(document.querySelectorAll(revealSel));
-    els.forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.willChange = 'opacity, transform';
-    });
+    if (!els.length) return;
+
+    document.documentElement.classList.add('js-reveal');
+    els.forEach(el => el.classList.add('will-reveal'));
+
+    function reveal(el, delay) {
+      if (el.classList.contains('is-revealed')) return;
+      el.style.transition =
+        'opacity .85s var(--ease-expo) ' + delay + 'ms, transform .9s var(--ease-expo) ' + delay + 'ms';
+      el.classList.add('is-revealed');
+      setTimeout(() => { el.style.willChange = 'auto'; }, 1400 + delay);
+    }
+
+    // IntersectionObserver only delivers callbacks while the page is actually
+    // being rendered, so a backgrounded or occluded tab would otherwise leave
+    // everything at opacity 0. This is the net that catches that.
+    const failsafe = setTimeout(() => {
+      els.forEach(el => reveal(el, 0));
+    }, 2500);
 
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -101,30 +119,11 @@
           ? Array.from(el.parentElement.children).filter(c => els.indexOf(c) !== -1)
           : [el];
         const idx = Math.max(0, sibs.indexOf(el));
-        const delay = Math.min(idx * 85, 340);
-        el.style.transition =
-          'opacity .85s var(--ease-expo) ' + delay + 'ms, transform .9s var(--ease-expo) ' + delay + 'ms';
-        requestAnimationFrame(() => {
-          el.style.opacity = '1';
-          el.style.transform = 'none';
-        });
+        reveal(el, Math.min(idx * 85, 340));
         io.unobserve(el);
-        setTimeout(() => { el.style.willChange = 'auto'; }, 1400 + delay);
       });
+      if (els.every(el => el.classList.contains('is-revealed'))) clearTimeout(failsafe);
     }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
 
     els.forEach(el => io.observe(el));
-
-    // ── Lenis smooth scroll (weighted, inertial) — loaded lazily from CDN ──
-    const s = document.createElement('script');
-    s.src = 'https://unpkg.com/lenis@1.1.14/dist/lenis.min.js';
-    s.async = true;
-    s.onload = function () {
-      if (!window.Lenis) return;
-      const lenis = new window.Lenis({ lerp: 0.09, smoothWheel: true, wheelMultiplier: 1 });
-      lenis.on('scroll', (e) => setNav(e.scroll));
-      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-      requestAnimationFrame(raf);
-    };
-    document.head.appendChild(s);
   })();

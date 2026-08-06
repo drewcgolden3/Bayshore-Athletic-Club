@@ -5,10 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bayshore Athletic Club | Braintree, MA</title>
 <meta name="description" content="South Shore's full-service gym in Braintree, MA. Classes, training, tanning, babysitting, and more. Claim a free day pass.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bayshore Athletic Club">
+<meta property="og:title" content="Bayshore Athletic Club — Braintree, MA">
+<meta property="og:description" content="South Shore&#x27;s full-service club. Premium gym floor, classes, training, recovery, and more. Claim a free day pass.">
+<meta property="og:url" content="https://drewcgolden3.github.io/Bayshore-Athletic-Club/">
+<meta property="og:image" content="https://drewcgolden3.github.io/Bayshore-Athletic-Club/images/gym-interior.jpg">
+<meta property="og:image:alt" content="The training floor at Bayshore Athletic Club">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bayshore Athletic Club — Braintree, MA">
+<meta name="twitter:description" content="South Shore&#x27;s full-service club. Premium gym floor, classes, training, recovery, and more. Claim a free day pass.">
+<meta name="twitter:image" content="https://drewcgolden3.github.io/Bayshore-Athletic-Club/images/gym-interior.jpg">
+<link rel="canonical" href="https://drewcgolden3.github.io/Bayshore-Athletic-Club/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=2">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -84,6 +96,49 @@
     <div class="stat-item">
       <div class="stat-num">4.7<span style="font-size:30px; vertical-align:super;">★</span></div>
       <div class="stat-label">Google Rating</div>
+    </div>
+  </div>
+</section>
+<!-- EXPLORE -->
+<section id="explore">
+  <div class="container">
+    <p class="section-label">Explore the Club</p>
+    <h2 class="section-title">EVERYTHING UNDER<br>ONE ROOF</h2>
+    <p class="section-body">A premium gym floor, a full class schedule, certified trainers, and the extras most gyms don't bother with.</p>
+
+    <div class="explore-grid">
+      <a href="classes.html" class="explore-card">
+        <img class="explore-media" src="images/gym-studio.jpg" alt="Group fitness studio at Bayshore Athletic Club" loading="lazy" decoding="async">
+        <span class="explore-body">
+          <span class="explore-name">Classes</span>
+          <span class="explore-desc">Ten-plus group fitness classes a week, from strength to cycle to yoga — all included with membership.</span>
+          <span class="explore-link">See the schedule</span>
+        </span>
+      </a>
+      <a href="personal-training.html" class="explore-card">
+        <img class="explore-media" src="images/gym-floor.jpg" alt="Training floor at Bayshore Athletic Club" loading="lazy" decoding="async">
+        <span class="explore-body">
+          <span class="explore-name">Personal Training</span>
+          <span class="explore-desc">Certified trainers who build the plan around you. Start with a free assessment.</span>
+          <span class="explore-link">Meet the trainers</span>
+        </span>
+      </a>
+      <a href="amenities.html" class="explore-card">
+        <img class="explore-media" src="images/smoothie-bar.jpg" alt="The smoothie bar at Bayshore Athletic Club" loading="lazy" decoding="async">
+        <span class="explore-body">
+          <span class="explore-name">Amenities</span>
+          <span class="explore-desc">Sauna and recovery, physical therapy, smoothie bar, tanning, babysitting, and spotless locker rooms.</span>
+          <span class="explore-link">See the club</span>
+        </span>
+      </a>
+      <a href="memberships.html" class="explore-card">
+        <img class="explore-media" src="images/gym-cardio.jpg" alt="Cardio floor at Bayshore Athletic Club" loading="lazy" decoding="async">
+        <span class="explore-body">
+          <span class="explore-name">Membership</span>
+          <span class="explore-desc">Straightforward plans for individuals, families, and paid-in-full members. No pressure, no games.</span>
+          <span class="explore-link">View plans</span>
+        </span>
+      </a>
     </div>
   </div>
 </section>
@@ -171,122 +226,6 @@
   </div>
 </footer>
 
-<!-- ===================================================================== -->
-<!-- GYM-CLOSING PROMO POPUP  ·  self-contained · auto-hides after Jul 10  -->
-<!-- ===================================================================== -->
-<style>
-  .bacp-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(12,13,15,.74);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);opacity:0;transition:opacity .28s ease;}
-  .bacp-overlay.is-open{opacity:1;}
-  .bacp-overlay[hidden]{display:none;}
-  .bacp-card{position:relative;width:100%;max-width:460px;background:var(--dark,#1c1f24);color:#fff;border:1px solid rgba(255,255,255,.10);border-radius:18px;overflow:hidden;overflow-y:auto;max-height:calc(100vh - 40px);box-shadow:0 30px 80px rgba(0,0,0,.55);transform:translateY(14px) scale(.98);transition:transform .28s ease;}
-  .bacp-overlay.is-open .bacp-card{transform:none;}
-  .bacp-accent{height:5px;background:linear-gradient(90deg,var(--accent,#c8963a),var(--red,#b83228));}
-  .bacp-close{position:absolute;top:10px;right:12px;z-index:2;width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;font-size:24px;line-height:1;cursor:pointer;transition:background .2s ease;}
-  .bacp-close:hover{background:rgba(255,255,255,.18);}
-  .bacp-body{padding:30px 30px 28px;text-align:center;}
-  .bacp-pill{display:inline-block;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--red,#b83228);padding:6px 14px;border-radius:999px;margin-bottom:16px;}
-  .bacp-title{font-family:var(--font-display);font-weight:400;font-size:40px;line-height:.98;letter-spacing:.01em;margin:0 0 12px;text-transform:uppercase;}
-  .bacp-title span{color:var(--red,#b83228);}
-  .bacp-lead{font-family:var(--font-body);font-size:15px;line-height:1.5;color:rgba(255,255,255,.82);margin:0 auto 22px;max-width:36ch;}
-  .bacp-lead strong{color:var(--accent-lt,#d9aa5a);font-weight:600;}
-  .bacp-offers{display:flex;gap:12px;margin-bottom:20px;}
-  .bacp-offer{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:14px 10px;}
-  .bacp-offer-big{font-family:var(--font-display);font-size:38px;line-height:1;color:var(--accent,#c8963a);}
-  .bacp-offer-sub{font-family:var(--font-body);font-size:12px;line-height:1.35;color:rgba(255,255,255,.78);margin-top:4px;}
-  .bacp-offer-sub strong{color:#fff;white-space:nowrap;}
-  .bacp-perks{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;text-align:left;}
-  .bacp-perks li{position:relative;padding-left:20px;font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,.85);}
-  .bacp-perks li::before{content:"";position:absolute;left:0;top:6px;width:8px;height:8px;border-radius:50%;background:var(--accent,#c8963a);}
-  .bacp-actions{display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
-  .bacp-btn-primary{display:block;font-family:var(--font-body);font-weight:600;font-size:15px;background:var(--accent,#c8963a);color:#1c1f24;text-decoration:none;padding:14px 18px;border-radius:10px;transition:background .2s ease;}
-  .bacp-btn-primary:hover{background:var(--accent-lt,#d9aa5a);}
-  .bacp-btn-ghost{display:block;font-family:var(--font-body);font-weight:500;font-size:14px;color:rgba(255,255,255,.85);text-decoration:none;padding:11px 18px;border-radius:10px;border:1px solid rgba(255,255,255,.18);transition:border-color .2s ease,color .2s ease;}
-  .bacp-btn-ghost:hover{border-color:var(--accent,#c8963a);color:#fff;}
-  .bacp-addr{font-family:var(--font-body);font-size:12.5px;letter-spacing:.02em;color:rgba(255,255,255,.62);margin:0;display:flex;align-items:center;justify-content:center;gap:6px;}
-  .bacp-addr svg{flex:none;color:var(--red,#b83228);}
-  body.bacp-lock{overflow:hidden;}
-  @media (max-width:420px){
-    .bacp-body{padding:26px 20px 24px;}
-    .bacp-title{font-size:34px;}
-    .bacp-offers{gap:10px;}
-    .bacp-offer-big{font-size:32px;}
-  }
-</style>
-
-<div id="bacPromoOverlay" class="bacp-overlay" role="dialog" aria-modal="true" aria-labelledby="bacpTitle" hidden>
-  <div class="bacp-card">
-    <button type="button" class="bacp-close" id="bacpClose" aria-label="Close">&times;</button>
-    <div class="bacp-accent"></div>
-    <div class="bacp-body">
-      <span class="bacp-pill">★ Limited-Time Offer</span>
-      <h2 id="bacpTitle" class="bacp-title">Sorry to hear your<br><span>gym is closing</span></h2>
-      <p class="bacp-lead">Come try us out on a <strong>FREE day</strong> — and we've <strong>extended our promotion</strong> just for you.</p>
-
-      <div class="bacp-offers">
-        <div class="bacp-offer">
-          <div class="bacp-offer-big">NO</div>
-          <div class="bacp-offer-sub">Enrollment Fee</div>
-        </div>
-        <div class="bacp-offer">
-          <div class="bacp-offer-big">VIP</div>
-          <div class="bacp-offer-sub">Membership until<br><strong>July 10th</strong></div>
-        </div>
-      </div>
-
-      <ul class="bacp-perks">
-        <li>State-of-the-art equipment</li>
-        <li>Clean &amp; modern facility</li>
-        <li>Sauna &amp; locker rooms</li>
-        <li>Friendly staff &amp; community</li>
-      </ul>
-
-      <div class="bacp-actions">
-        <a href="free-pass.html" class="bacp-btn-primary">Claim Your Free Day Pass →</a>
-        <a href="memberships.html" class="bacp-btn-ghost">See Memberships</a>
-      </div>
-
-      <p class="bacp-addr">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
-        160 Granite St, Braintree, MA 02184
-      </p>
-    </div>
-  </div>
-</div>
-
-<script>
-  (function(){
-    /* ===== PROMO POPUP — auto-hides when the promotion ends ===================
-       The popup shows THROUGH July 10, 2026 and stops appearing on July 11, 2026.
-       To change the cutoff, edit the date below: new Date(YEAR, MONTH_INDEX, DAY).
-       Months are 0-indexed, so 6 = July. This is the first day it will NOT show.
-       (e.g. for it to vanish at the start of July 10, use new Date(2026, 6, 10).) */
-    var PROMO_HIDE_ON = new Date(2026, 6, 11, 0, 0, 0);
-    if (new Date() >= PROMO_HIDE_ON) return; /* promotion over — never show */
-
-    var overlay  = document.getElementById('bacPromoOverlay');
-    if (!overlay) return;
-    var closeBtn = document.getElementById('bacpClose');
-
-    function openPopup(){
-      overlay.hidden = false;
-      void overlay.offsetWidth;            /* reflow so the transition runs */
-      overlay.classList.add('is-open');
-      document.body.classList.add('bacp-lock');
-    }
-    function closePopup(){
-      overlay.classList.remove('is-open');
-      document.body.classList.remove('bacp-lock');
-      setTimeout(function(){ overlay.hidden = true; }, 300);
-    }
-
-    closeBtn.addEventListener('click', closePopup);
-    overlay.addEventListener('click', function(e){ if (e.target === overlay) closePopup(); });
-    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !overlay.hidden) closePopup(); });
-
-    window.addEventListener('load', function(){ setTimeout(openPopup, 1100); });
-  })();
-</script>
-
-<script src="script.js"></script>
+<script src="script.js?v=2"></script>
 </body>
 </html>

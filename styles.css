@@ -346,6 +346,42 @@
   .amenity-name { font-size: 14px; font-weight: 600; color: var(--ink); }
   .amenity-detail { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
+  /* ── EXPLORE GRID (home) ── */
+  #explore { background: var(--bg); }
+  .explore-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; }
+  .explore-card {
+    display: flex; flex-direction: column;
+    background: var(--bg-card); border: 1px solid var(--border);
+    text-decoration: none; color: inherit; overflow: hidden;
+    transition: box-shadow 0.5s var(--ease-expo), transform 0.5s var(--ease-expo), border-color 0.45s var(--ease-soft);
+  }
+  .explore-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-5px); border-color: var(--border-lt); }
+  .explore-media {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+    filter: saturate(0.94);
+    transition: transform 0.7s var(--ease-expo), filter 0.5s var(--ease-soft);
+  }
+  .explore-card:hover .explore-media { transform: scale(1.05); filter: saturate(1.06); }
+  .explore-body { padding: 26px 24px 28px; display: flex; flex-direction: column; flex: 1; }
+  /* The card's inner elements are spans (only phrasing content is valid inside
+     an <a>), so they need explicit block display for the spacing to apply. */
+  .explore-name {
+    display: block;
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 25px; letter-spacing: 0.02em; color: var(--ink);
+    margin-bottom: 8px; transition: color 0.35s var(--ease-soft);
+  }
+  .explore-card:hover .explore-name { color: var(--accent-deep); }
+  .explore-desc { display: block; font-size: 13.5px; color: var(--muted); line-height: 1.65; flex: 1; }
+  .explore-link {
+    display: block;
+    margin-top: 18px; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent-deep);
+  }
+  .explore-link::after { content: " →"; }
+  @media (max-width: 980px) { .explore-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .explore-grid { grid-template-columns: 1fr; } }
+
   /* ── REVIEWS ── */
   #reviews { background: var(--bg-alt); }
   .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 64px; }
@@ -622,10 +658,20 @@
   @media (max-width: 900px) { .trainers-grid { grid-template-columns: repeat(2, 1fr); gap: 26px; } }
   @media (max-width: 520px) { .trainers-grid { grid-template-columns: 1fr; } }
 
+  /* ── SCROLL REVEAL ──
+     The hidden state is gated on .js-reveal, which script.js adds to <html>
+     only once it has successfully tagged the elements. If the script is slow,
+     blocked, or fails outright, this rule never applies and the page renders
+     in full rather than blank below the hero. */
+  html.js-reveal .will-reveal {
+    opacity: 0; transform: translateY(30px); will-change: opacity, transform;
+  }
+  html.js-reveal .will-reveal.is-revealed { opacity: 1; transform: none; }
+
   /* ── REDUCED MOTION ── */
   @media (prefers-reduced-motion: reduce) {
     * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important;
         transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
     .hero-photo { animation: none; }
-    [data-reveal] { opacity: 1 !important; transform: none !important; }
+    html.js-reveal .will-reveal { opacity: 1 !important; transform: none !important; }
   }
