@@ -1,0 +1,255 @@
+/* =============================================================================
+   BAYSHORE ATHLETIC CLUB — branded AI chat widget
+
+   Talks to the Switchboard OS backend (/api/chat for the receptionist,
+   /api/track for page views), styled to match the site: dark header like the
+   nav, bronze accents, DM Sans + Barlow Condensed. Greets visitors with a
+   proactive bubble a moment after the page settles.
+
+   Everything configurable lives in CONFIG below.
+   ============================================================================ */
+(function () {
+  "use strict";
+
+  var CONFIG = {
+    clientSlug: "bayshore-athletic-club",             // Switchboard OS client
+    apiBase:    "https://switchboard-os.vercel.app",  // Switchboard backend
+    title:      "Bayshore Athletic Club",             // chat header
+    subtitle:   "Ask us anything — we reply fast",
+    greeting:   "Hi there! Looking for a free day pass or membership info?",
+    opener:     "Ask me about memberships, classes, hours, personal training, or a free day pass.",
+  };
+
+  var slug = CONFIG.clientSlug, apiBase = CONFIG.apiBase;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Site palette — kept in sync with styles.css :root by hand, since this file
+     is injected on pages that may not have finished parsing the stylesheet. */
+  var DARK = "#1a1d21", INK = "#1b1e23", CREAM = "#f4f1ed", CARD = "#fffdfa";
+  var BRONZE = "#8a6a1c", BRONZE_LT = "#c49a35";
+  var LINE = "rgba(27,30,35,0.12)";
+  var GRAD = "linear-gradient(135deg," + BRONZE_LT + "," + BRONZE + ")";
+  var FONT = "'DM Sans', system-ui, -apple-system, sans-serif";
+  var DISPLAY = "'Barlow Condensed', 'DM Sans', sans-serif";
+
+  var CHAT_SVG = function (stroke) {
+    return '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="' + stroke +
+      '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.9-.9L3 21l1.9-5.6A8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg>';
+  };
+  /* The club's dumbbell mark, simplified — the full badge turns to mush at 34px. */
+  var MARK_SVG =
+    '<svg width="20" height="20" viewBox="0 0 400 160" fill="' + BRONZE_LT + '" aria-hidden="true">' +
+    '<rect x="14" y="42" width="26" height="76"/><rect x="52" y="20" width="44" height="120"/>' +
+    '<rect x="96" y="64" width="208" height="32"/>' +
+    '<rect x="304" y="20" width="44" height="120"/><rect x="360" y="42" width="26" height="76"/></svg>';
+
+  function css(el, s) { for (var k in s) el.style[k] = s[k]; }
+  function isNarrow() { return window.matchMedia("(max-width: 760px)").matches; }
+  function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+
+  /* ---- page-view tracking — fire-and-forget, never blocks the page ---- */
+  try {
+    fetch(apiBase + "/api/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(Object.assign(
+        { clientSlug: slug, path: location.pathname, referrer: document.referrer || null },
+        window.BAC_ATTRIBUTION || {}
+      )),
+      keepalive: true,
+    }).catch(function () {});
+  } catch (e) {}
+
+  var messages = [];
+  var open = false;
+
+  /* ---- launcher ---- */
+  var ring = document.createElement("span");
+  css(ring, { position: "fixed", right: "22px", bottom: "22px", width: "60px", height: "60px",
+    borderRadius: "50%", background: BRONZE_LT, opacity: ".5", zIndex: "2147482999", pointerEvents: "none" });
+  if (!reduce && ring.animate) {
+    ring.animate([{ transform: "scale(1)", opacity: .45 }, { transform: "scale(1.8)", opacity: 0 }],
+      { duration: 2200, iterations: Infinity, easing: "ease-out" });
+  } else { ring.style.display = "none"; }
+
+  var launcher = document.createElement("button");
+  launcher.type = "button";
+  launcher.setAttribute("aria-label", "Chat with Bayshore Athletic Club");
+  launcher.setAttribute("aria-expanded", "false");
+  launcher.innerHTML = CHAT_SVG(DARK);
+  css(launcher, { position: "fixed", right: "22px", bottom: "22px", width: "60px", height: "60px",
+    borderRadius: "50%", border: "none", cursor: "pointer", background: GRAD,
+    boxShadow: "0 12px 28px -8px rgba(26,29,33,.55)", zIndex: "2147483000",
+    display: "grid", placeItems: "center", transition: "transform .2s ease" });
+  launcher.onmouseenter = function () { launcher.style.transform = "scale(1.06)"; };
+  launcher.onmouseleave = function () { launcher.style.transform = "scale(1)"; };
+
+  /* ---- proactive greeting bubble ---- */
+  var promo = document.createElement("div");
+  promo.setAttribute("role", "status");
+  css(promo, { position: "fixed", right: "22px", bottom: "94px", maxWidth: "258px",
+    background: CARD, color: INK, fontFamily: FONT, fontSize: "15px", fontWeight: "500",
+    lineHeight: "1.45", padding: "14px 16px", borderRadius: "16px 16px 4px 16px",
+    boxShadow: "0 18px 44px -12px rgba(26,29,33,.42)", border: "1px solid " + LINE,
+    zIndex: "2147483000", cursor: "pointer", opacity: "0", transform: "translateY(10px)",
+    transition: "opacity .35s ease, transform .35s ease", display: "none" });
+  var promoText = document.createElement("span");
+  promoText.textContent = CONFIG.greeting;
+  var promoX = document.createElement("button");
+  promoX.type = "button"; promoX.setAttribute("aria-label", "Dismiss"); promoX.innerHTML = "&times;";
+  css(promoX, { position: "absolute", top: "5px", right: "8px", border: "none", background: "transparent",
+    color: "#797e86", fontSize: "18px", lineHeight: "1", cursor: "pointer", padding: "2px 4px" });
+  promo.appendChild(promoX); promo.appendChild(promoText);
+  if (isNarrow()) css(promo, { maxWidth: "216px", fontSize: "14px", padding: "12px 14px", bottom: "88px" });
+
+  /* ---- panel ---- */
+  var panel = document.createElement("div");
+  panel.setAttribute("role", "dialog");
+  panel.setAttribute("aria-label", "Chat with Bayshore Athletic Club");
+  css(panel, { position: "fixed", right: "22px", bottom: "94px", width: "372px",
+    maxWidth: "calc(100vw - 32px)", height: "524px", maxHeight: "calc(100vh - 130px)",
+    background: CREAM, borderRadius: "16px", boxShadow: "0 26px 60px -16px rgba(26,29,33,.5)",
+    display: "none", flexDirection: "column", overflow: "hidden", fontFamily: FONT,
+    zIndex: "2147483001", border: "1px solid " + LINE });
+
+  var head = document.createElement("div");
+  css(head, { background: DARK, color: CREAM, padding: "15px 18px", display: "flex",
+    alignItems: "center", gap: "12px" });
+  head.innerHTML =
+    '<span style="width:38px;height:38px;border-radius:50%;background:rgba(196,154,53,.16);display:grid;place-items:center;flex:none">' +
+      MARK_SVG +
+    '</span>' +
+    '<span style="flex:1;min-width:0">' +
+      '<span style="display:block;font-family:' + DISPLAY + ';font-weight:700;font-size:19px;letter-spacing:.05em;text-transform:uppercase;line-height:1.1">' + esc(CONFIG.title) + '</span>' +
+      '<span style="display:block;font-size:12px;color:rgba(244,241,237,.62);margin-top:2px">' + esc(CONFIG.subtitle) + '</span>' +
+    '</span>' +
+    '<button class="bac-close" type="button" aria-label="Close chat" style="border:none;background:transparent;color:' + CREAM + ';font-size:22px;line-height:1;cursor:pointer;padding:2px 6px">&times;</button>';
+
+  var bodyEl = document.createElement("div");
+  css(bodyEl, { flex: "1", overflowY: "auto", padding: "16px", display: "flex",
+    flexDirection: "column", gap: "10px", background: CREAM });
+
+  var row = document.createElement("div");
+  css(row, { display: "flex", gap: "8px", padding: "12px", borderTop: "1px solid " + LINE,
+    background: CARD, alignItems: "center" });
+  var input = document.createElement("input");
+  input.type = "text"; input.placeholder = "Type your message…"; input.setAttribute("aria-label", "Message");
+  css(input, { flex: "1", border: "1.5px solid " + LINE, borderRadius: "999px", padding: "10px 14px",
+    fontSize: "14px", fontFamily: FONT, outline: "none", color: INK, background: CARD });
+  input.onfocus = function () { input.style.borderColor = BRONZE; };
+  input.onblur = function () { input.style.borderColor = LINE; };
+  var send = document.createElement("button");
+  send.type = "button"; send.setAttribute("aria-label", "Send message");
+  send.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="' + DARK +
+    '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+  css(send, { border: "none", background: GRAD, borderRadius: "50%", width: "42px", height: "42px",
+    flex: "none", cursor: "pointer", display: "grid", placeItems: "center" });
+
+  row.appendChild(input); row.appendChild(send);
+  panel.appendChild(head); panel.appendChild(bodyEl); panel.appendChild(row);
+
+  function addMsg(role, text) {
+    var b = document.createElement("div");
+    b.textContent = text;
+    css(b, { maxWidth: "84%", padding: "10px 13px", fontSize: "14px", lineHeight: "1.5",
+      whiteSpace: "pre-wrap", borderRadius: "14px", fontFamily: FONT });
+    if (role === "user") {
+      css(b, { alignSelf: "flex-end", background: BRONZE, color: "#fffdfa", borderBottomRightRadius: "4px" });
+    } else {
+      css(b, { alignSelf: "flex-start", background: CARD, color: INK,
+        border: "1px solid " + LINE, borderBottomLeftRadius: "4px" });
+    }
+    bodyEl.appendChild(b); bodyEl.scrollTop = bodyEl.scrollHeight;
+    return b;
+  }
+  addMsg("assistant", CONFIG.greeting + "\n" + CONFIG.opener);
+
+  /* ---- open / close ---- */
+  function openPanel() {
+    open = true; panel.style.display = "flex"; hidePromo(true);
+    launcher.setAttribute("aria-expanded", "true");
+    setTimeout(function () { input.focus(); }, 60);
+  }
+  function closePanel() {
+    open = false; panel.style.display = "none";
+    launcher.setAttribute("aria-expanded", "false");
+  }
+  launcher.addEventListener("click", function () { open ? closePanel() : openPanel(); });
+  head.querySelector(".bac-close").addEventListener("click", closePanel);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && open) closePanel(); });
+
+  /* ---- send ---- */
+  function doSend() {
+    var t = input.value.trim(); if (!t) return;
+    input.value = "";
+    messages.push({ role: "user", content: t });
+    addMsg("user", t);
+    var typing = addMsg("assistant", "…");
+    fetch(apiBase + "/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ clientSlug: slug, messages: messages }),
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var reply = d.reply || d.error || "Sorry, something went wrong.";
+        typing.textContent = reply;
+        messages.push({ role: "assistant", content: reply });
+        bodyEl.scrollTop = bodyEl.scrollHeight;
+      })
+      .catch(function () {
+        typing.textContent = "Sorry, I couldn't reach us just now — please try again, or call 781-356-5303.";
+      });
+  }
+  send.addEventListener("click", doSend);
+  input.addEventListener("keydown", function (e) { if (e.key === "Enter") doSend(); });
+
+  /* ---- proactive greeting ---- */
+  function showPromo() {
+    try { if (sessionStorage.getItem("bac_chat_seen")) return; } catch (e) {}
+    if (open) return;
+    promo.style.display = "block";
+    requestAnimationFrame(function () {
+      promo.style.opacity = "1"; promo.style.transform = "translateY(0)";
+    });
+    // On a phone the bubble lands over the hero CTA, so it retires on its own
+    // rather than camping on the button until dismissed by hand.
+    if (isNarrow()) setTimeout(function () { if (!open) hidePromo(false); }, 6000);
+  }
+  function hidePromo(remember) {
+    promo.style.opacity = "0"; promo.style.transform = "translateY(10px)";
+    setTimeout(function () { promo.style.display = "none"; }, 350);
+    if (remember) { try { sessionStorage.setItem("bac_chat_seen", "1"); } catch (e) {} }
+  }
+  promoX.addEventListener("click", function (e) { e.stopPropagation(); hidePromo(true); });
+  promo.addEventListener("click", openPanel);
+
+  /* ---- mount ---- */
+  document.body.appendChild(ring);
+  document.body.appendChild(launcher);
+  document.body.appendChild(promo);
+  document.body.appendChild(panel);
+
+  /* ---- phones: stay out of the hero ----
+     The hero CTAs run nearly the full width of a small screen, so a launcher
+     pinned bottom-right lands on top of them. Hold it back until the visitor
+     has scrolled past the first screen, then bring it in for good. */
+  if (isNarrow()) {
+    var revealed = false;
+    css(launcher, { opacity: "0", pointerEvents: "none", transition: "opacity .3s ease, transform .2s ease" });
+    ring.style.display = "none";
+    var revealLauncher = function () {
+      if (revealed || window.scrollY < window.innerHeight * 0.75) return;
+      revealed = true;
+      css(launcher, { opacity: "1", pointerEvents: "auto" });
+      if (!reduce) ring.style.display = "";
+      window.removeEventListener("scroll", revealLauncher);
+      setTimeout(showPromo, 600);
+    };
+    window.addEventListener("scroll", revealLauncher, { passive: true });
+    revealLauncher();
+  } else {
+    setTimeout(showPromo, 1400);
+  }
+})();

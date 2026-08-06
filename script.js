@@ -9,10 +9,38 @@
     if (mm) mm.classList.remove('open');
   }
 
+  // ── Campaign attribution ──
+  // Captured on the first page of a visit and kept for the session, so a lead
+  // can be credited to the ad that brought them in rather than to whatever page
+  // they happened to submit from. Also read by chat.js for page-view tracking.
+  const ATTRIBUTION = (function () {
+    const KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    const params = new URLSearchParams(location.search);
+    const fresh = {};
+    KEYS.forEach(k => { const v = params.get(k); if (v) fresh[k] = v.slice(0, 200); });
+
+    let stored = null;
+    try { stored = JSON.parse(sessionStorage.getItem('bac_attribution') || 'null'); } catch (e) {}
+
+    // Keep what's stored unless this page carries tags and the stored visit
+    // didn't — someone who browsed organically then clicked an ad should be
+    // credited to the ad.
+    const hasFresh = Object.keys(fresh).length > 0;
+    const data = (hasFresh || !stored) ? Object.assign({
+      landing_path: location.pathname,
+      referrer: document.referrer || null,
+    }, fresh) : stored;
+
+    try { sessionStorage.setItem('bac_attribution', JSON.stringify(data)); } catch (e) {}
+    return data;
+  })();
+  window.BAC_ATTRIBUTION = ATTRIBUTION;
+
   // ── Day pass form ──
-  // Paste your deployed Google Apps Script Web App URL between the quotes below.
-  // Until then the form will show success but NOT send anything — wire this before going live.
-  const DAYPASS_ENDPOINT = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+  // Posts to Switchboard OS, so the enquiry lands in the Leads list on the
+  // dashboard and the club gets an email the moment it arrives.
+  const SWITCHBOARD_API = 'https://switchboard-os.vercel.app';
+  const CLIENT_SLUG = 'bayshore-athletic-club';
 
   function val(id) { return (document.getElementById(id).value || '').trim(); }
 
@@ -37,22 +65,24 @@
       document.getElementById('daypass-success').style.display = 'block';
     };
 
-    // Backend not wired yet — don't error publicly, but make it obvious in the console.
-    if (DAYPASS_ENDPOINT.indexOf('PASTE_') === 0) {
-      console.warn('Day pass backend not configured: set DAYPASS_ENDPOINT to your Apps Script URL. No email was sent.');
-      showSuccess();
-      return;
-    }
-
     btn.disabled = true;
     btn.textContent = 'SENDING…';
     try {
-      await fetch(DAYPASS_ENDPOINT, {
+      const res = await fetch(SWITCHBOARD_API + '/api/lead', {
         method: 'POST',
-        mode: 'no-cors', // Apps Script web apps don't return CORS headers; we submit fire-and-forget
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({ name, email, phone, source: 'Free Day Pass — website' })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.assign({
+          clientSlug: CLIENT_SLUG,
+          name, email, phone,
+          interest: 'Free Day Pass',
+          source: 'Website — Free Day Pass',
+          company,                       // honeypot; the API answers 200 and drops it
+        }, ATTRIBUTION)),
       });
+      const data = await res.json();
+      // Only claim success once the lead is actually recorded — a silent
+      // success screen over a dropped enquiry is worse than an error.
+      if (!data || !data.ok) throw new Error(data && data.error ? data.error : 'not recorded');
       showSuccess();
     } catch (e) {
       btn.disabled = false;
