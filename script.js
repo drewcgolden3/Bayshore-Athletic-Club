@@ -42,6 +42,64 @@
   const SWITCHBOARD_API = 'https://switchboard-os.vercel.app';
   const CLIENT_SLUG = 'bayshore-athletic-club';
 
+  // ── Known-visitor id ──
+  // Switchboard hands back the lead id whenever it saves someone — from the day
+  // pass form here, or from the chat widget in chat.js. Holding on to it means a
+  // later click through to the signup page can be attributed to that person,
+  // which moves them along the pipeline without anyone at the club noticing and
+  // doing it by hand. Kept in localStorage because the form and the membership
+  // links are on different pages. Keyed by slug, and chat.js uses the same key.
+  const SB_LEAD_KEY = `sb_lead_${CLIENT_SLUG}`;
+
+  function rememberLead(id) {
+    try { if (id) localStorage.setItem(SB_LEAD_KEY, id); } catch (e) {}
+  }
+
+  function sbLeadId() {
+    try { return localStorage.getItem(SB_LEAD_KEY); } catch (e) { return null; }
+  }
+
+  // ── Membership signup handoffs ──
+  // Every click through to MemberSpot, counted. This is the half of the funnel
+  // we can measure ourselves: how many people the site actually sent to signup,
+  // off the back of which campaign. Real completed-signup counts would have to
+  // come from MemberSpot's own side.
+  //
+  // sendBeacon so the request survives the tab navigating away, and the click
+  // is never blocked or delayed either way.
+  (function trackSignupHandoffs() {
+    const links = document.querySelectorAll('a[href*="thememberspot.com"]');
+    if (!links.length) return;
+
+    links.forEach((el) => {
+      el.addEventListener('click', () => {
+        const payload = JSON.stringify(Object.assign({
+          clientSlug: CLIENT_SLUG,
+          // Null for anyone who never gave us their details — the click still
+          // counts, it just isn't tied to a person.
+          leadId: sbLeadId(),
+          origin: 'website',
+          label: (el.textContent || '').trim().slice(0, 120),
+          path: window.location.pathname,
+        }, ATTRIBUTION));
+
+        const endpoint = `${SWITCHBOARD_API}/api/booking-click`;
+        try {
+          if (navigator.sendBeacon) {
+            navigator.sendBeacon(endpoint, new Blob([payload], { type: 'application/json' }));
+          } else {
+            fetch(endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: payload,
+              keepalive: true,
+            }).catch(() => {});
+          }
+        } catch (e) {}
+      });
+    });
+  })();
+
   function val(id) { return (document.getElementById(id).value || '').trim(); }
 
   async function submitDayPass() {
@@ -83,6 +141,7 @@
       // Only claim success once the lead is actually recorded — a silent
       // success screen over a dropped enquiry is worse than an error.
       if (!data || !data.ok) throw new Error(data && data.error ? data.error : 'not recorded');
+      rememberLead(data.id);
       showSuccess();
     } catch (e) {
       btn.disabled = false;

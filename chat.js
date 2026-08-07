@@ -193,6 +193,13 @@
     })
       .then(function (r) { return r.json(); })
       .then(function (d) {
+        // The receptionist saved this visitor as a lead. Hold on to the id so a
+        // later click through to signup is attributed to them — same key
+        // script.js uses for the day pass form.
+        try {
+          if (d.leadId) localStorage.setItem("sb_lead_" + slug, d.leadId);
+        } catch (e) {}
+
         var reply = d.reply || d.error || "Sorry, something went wrong.";
         typing.textContent = reply;
         messages.push({ role: "assistant", content: reply });
