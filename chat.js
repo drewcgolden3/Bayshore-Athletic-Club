@@ -180,6 +180,55 @@
     bodyEl.appendChild(b); bodyEl.scrollTop = bodyEl.scrollHeight;
     return b;
   }
+
+  /* Buttons the receptionist offers — membership tiers, day passes, whatever the
+     club has set up in Switchboard. Each href is a signed tracking link that
+     records the click and then forwards to the real sign-up page, so we can tell
+     which option a visitor actually chose. The lead id rides along when we know
+     who they are; without it the click still counts, just anonymously. */
+  function addOptions(options) {
+    var wrap = document.createElement("div");
+    css(wrap, { display: "flex", flexDirection: "column", gap: "6px", maxWidth: "84%",
+      alignSelf: "flex-start", margin: "2px 0 4px" });
+
+    var lead = null;
+    try { lead = localStorage.getItem("sb_lead_" + slug); } catch (e) {}
+
+    options.forEach(function (o) {
+      var a = document.createElement("a");
+      a.href = o.url + (lead ? "?lead=" + encodeURIComponent(lead) : "");
+      a.target = "_blank"; a.rel = "noopener";
+      css(a, { display: "block", padding: "10px 13px", borderRadius: "12px",
+        border: "1.5px solid " + BRONZE, background: CARD, color: INK, fontFamily: FONT,
+        fontSize: "14px", textDecoration: "none", lineHeight: "1.35",
+        transition: reduce ? "none" : "background .15s ease, transform .15s ease" });
+      a.onmouseenter = function () { a.style.background = "rgba(196,154,53,0.10)"; };
+      a.onmouseleave = function () { a.style.background = CARD; };
+
+      var name = document.createElement("span");
+      css(name, { fontWeight: "600", fontFamily: DISPLAY, letterSpacing: ".01em" });
+      name.textContent = o.label;
+      a.appendChild(name);
+
+      if (o.priceNote) {
+        var price = document.createElement("span");
+        css(price, { color: BRONZE, fontWeight: "600", marginLeft: "6px" });
+        price.textContent = o.priceNote;
+        a.appendChild(price);
+      }
+      if (o.description) {
+        var desc = document.createElement("span");
+        css(desc, { display: "block", fontSize: "12px", opacity: ".72", marginTop: "2px" });
+        desc.textContent = o.description;
+        a.appendChild(desc);
+      }
+
+      wrap.appendChild(a);
+    });
+
+    bodyEl.appendChild(wrap); bodyEl.scrollTop = bodyEl.scrollHeight;
+  }
+
   addMsg("assistant", CONFIG.greeting + "\n" + CONFIG.opener);
 
   /* ---- open / close ---- */
@@ -220,6 +269,7 @@
         var reply = d.reply || d.error || "Sorry, something went wrong.";
         typing.textContent = reply;
         messages.push({ role: "assistant", content: reply });
+        if (d.options && d.options.length) addOptions(d.options);
         bodyEl.scrollTop = bodyEl.scrollHeight;
       })
       .catch(function () {
