@@ -16,7 +16,7 @@
     apiBase:    "https://switchboard-os.vercel.app",  // Switchboard backend
     title:      "Bayshore Athletic Club",             // chat header
     subtitle:   "Ask us anything — we reply fast",
-    greeting:   "Hi there! Looking for a free day pass or membership info?",
+    greeting:   "Hi there! I am Bayshore's AI assistant. Ask me anything.",
     opener:     "Ask me about memberships, classes, hours, personal training, or a free day pass.",
   };
 
