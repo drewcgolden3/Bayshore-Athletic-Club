@@ -15,7 +15,7 @@
     clientSlug: "bayshore-athletic-club",             // Switchboard OS client
     apiBase:    "https://switchboard-os.vercel.app",  // Switchboard backend
     title:      "Bayshore Athletic Club",             // chat header
-    subtitle:   "Ask us anything — we reply fast",
+    subtitle:   "We reply instantly",
     greeting:   "Hi there! Looking for a free day pass or membership info?",
     opener:     "Ask me about memberships, classes, hours, personal training, or a free day pass.",
   };
