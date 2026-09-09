@@ -150,7 +150,11 @@
         <input type="email" id="dp-email" placeholder="Email Address" autocomplete="email">
         <input type="tel" id="dp-phone" placeholder="Mobile Phone (for text updates)" autocomplete="tel">
         <input type="text" id="dp-company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
-        <p class="form-consent" style="font-size:12px; line-height:1.55; opacity:.7; margin:4px 0 2px;">By submitting, you agree that Bayshore Athletic Club may contact you about your enquiry by email or text at the details above. Message frequency varies; message and data rates may apply. Reply STOP to opt out, HELP for help. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</p>
+        <label class="form-sms-optin" style="display:flex; gap:9px; align-items:flex-start; font-size:12.5px; line-height:1.5; margin:2px 0; cursor:pointer;">
+          <input type="checkbox" id="dp-sms-consent" style="margin-top:2px; flex:none; width:16px; height:16px; accent-color:var(--accent);">
+          <span>Yes, send me <strong>text messages</strong> from Bayshore Athletic Club about my day pass and membership at the mobile number above. Message frequency varies. Message and data rates may apply. Reply STOP to opt out, HELP for help.</span>
+        </label>
+        <p class="form-consent" style="font-size:12px; line-height:1.55; opacity:.7; margin:4px 0 2px;">We'll email you your pass either way. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</p>
         <button class="btn-submit" id="dp-submit" onclick="submitDayPass()">GET MY FREE PASS →</button>
         <p id="dp-error" style="display:none; color:var(--red); font-size:13px; text-align:center; margin-top:4px;"></p>
       </div>
