@@ -859,6 +859,15 @@
     font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--muted); margin-top: 10px;
   }
+  /* Only Deb has an outside practice to link to, so this sits quietly under the
+     credentials rather than competing with the card's own hierarchy. */
+  .trainer-link { margin-top: 8px; font-size: 12px; letter-spacing: 0.04em; }
+  .trainer-link a {
+    color: var(--accent-deep); font-weight: 600; text-decoration: none;
+    border-bottom: 1px solid transparent; padding-bottom: 1px;
+    transition: border-color 0.3s var(--ease-soft), color 0.3s var(--ease-soft);
+  }
+  .trainer-link a:hover { color: var(--ink); border-bottom-color: currentColor; }
   @media (max-width: 900px) { .trainers-grid { grid-template-columns: repeat(2, 1fr); gap: 26px; } }
   @media (max-width: 520px) { .trainers-grid { grid-template-columns: 1fr; } }
 
