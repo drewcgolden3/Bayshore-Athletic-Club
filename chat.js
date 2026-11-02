@@ -325,31 +325,48 @@
   promoX.addEventListener("click", function (e) { e.stopPropagation(); hidePromo(true); });
   promo.addEventListener("click", openPanel);
 
-  /* ---- mount ---- */
-  document.body.appendChild(ring);
-  document.body.appendChild(launcher);
-  document.body.appendChild(promo);
-  document.body.appendChild(panel);
+  /* ---- mount ----
+     Gated on the backend's widget status, the same way the generic widget.js
+     gates itself. /api/chat answers 403 once billing lapses, so drawing the
+     launcher regardless would hand a visitor a receptionist that takes their
+     question and never answers — worse than no chat at all.
 
-  /* ---- phones: stay out of the hero ----
-     The hero CTAs run nearly the full width of a small screen, so a launcher
-     pinned bottom-right lands on top of them. Hold it back until the visitor
-     has scrolled past the first screen, then bring it in for good. */
-  if (isNarrow()) {
-    var revealed = false;
-    css(launcher, { opacity: "0", pointerEvents: "none", transition: "opacity .3s ease, transform .2s ease" });
-    ring.style.display = "none";
-    var revealLauncher = function () {
-      if (revealed || window.scrollY < window.innerHeight * 0.75) return;
-      revealed = true;
-      css(launcher, { opacity: "1", pointerEvents: "auto" });
-      if (!reduce) ring.style.display = "";
-      window.removeEventListener("scroll", revealLauncher);
-      setTimeout(showPromo, 600);
-    };
-    window.addEventListener("scroll", revealLauncher, { passive: true });
-    revealLauncher();
-  } else {
-    setTimeout(showPromo, 1400);
+     Fails open on purpose: if the status call errors or the response is
+     unreadable, the widget mounts. A network blip should never be what costs
+     the club its receptionist. */
+  function mount() {
+    document.body.appendChild(ring);
+    document.body.appendChild(launcher);
+    document.body.appendChild(promo);
+    document.body.appendChild(panel);
+
+    /* ---- phones: stay out of the hero ----
+       The hero CTAs run nearly the full width of a small screen, so a launcher
+       pinned bottom-right lands on top of them. Hold it back until the visitor
+       has scrolled past the first screen, then bring it in for good. */
+    if (isNarrow()) {
+      var revealed = false;
+      css(launcher, { opacity: "0", pointerEvents: "none", transition: "opacity .3s ease, transform .2s ease" });
+      ring.style.display = "none";
+      var revealLauncher = function () {
+        if (revealed || window.scrollY < window.innerHeight * 0.75) return;
+        revealed = true;
+        css(launcher, { opacity: "1", pointerEvents: "auto" });
+        if (!reduce) ring.style.display = "";
+        window.removeEventListener("scroll", revealLauncher);
+        setTimeout(showPromo, 600);
+      };
+      window.addEventListener("scroll", revealLauncher, { passive: true });
+      revealLauncher();
+    } else {
+      setTimeout(showPromo, 1400);
+    }
   }
+
+  try {
+    fetch(apiBase + "/api/widget-status?client=" + encodeURIComponent(slug))
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (!d || d.enabled !== false) mount(); })
+      .catch(mount);
+  } catch (e) { mount(); }
 })();
