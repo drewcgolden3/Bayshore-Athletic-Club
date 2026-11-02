@@ -134,9 +134,6 @@
           name, email, phone,
           interest: 'Free Day Pass',
           source: 'Website — Free Day Pass',
-          // Explicit tick of the SMS box. Sent as a real boolean: the API
-          // treats anything else as no consent and will only ever email.
-          smsConsent: !!(document.getElementById('dp-sms-consent') || {}).checked,
           company,                       // honeypot; the API answers 200 and drops it
         }, ATTRIBUTION)),
       });
